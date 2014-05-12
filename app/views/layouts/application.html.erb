@@ -7,7 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <!-- call the navbar -->
   <%= render 'layouts/navbar' %>
+  <!-- flash notice and alert for devise -->
+  <% if notice %>
+      <p class="notice alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
   <!-- display the jumbotron only on index page -->
   <% if current_page? root_path %>
   <div class="jumbotron">
@@ -17,15 +25,7 @@
     </div>
   </div>
   <% end %>
-  <!-- flash notice and alert for devise -->
-  <% if notice %>
-      <p class="notice alert-success"><%= notice %></p>
-    <% end %>
-
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-  <%#= render 'layouts/carousel' %>
+  <!-- regular bootstrap container -->
   <div class='container'>
     <%= yield %>
   </div>

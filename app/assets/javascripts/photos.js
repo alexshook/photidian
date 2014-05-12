@@ -18,17 +18,17 @@
       if (navigator.getUserMedia) {
         navigator.getUserMedia(videoStream, function(stream) {
             // Cross browser checks
-            var url = window.URL || window.webkitURL;
-              videoElement.src = url ? url.createObjectURL(stream) : stream;
-              // Set the video to play
-              videoElement.play();
-          },
+          var url = window.URL || window.webkitURL;
+          videoElement.src = url ? url.createObjectURL(stream) : stream;
+          videoElement.play();
+        },
+
           function(error) {
             alert('Sorry, the browser you are using doesn\'t support getUserMedia');
             // return;
         });
       }
-    });
+    }); // end startButton.addEventListener
 
     photoButton.addEventListener('click', function() {
       videoElement.setAttribute('width', width);
@@ -40,6 +40,13 @@
       photo.setAttribute('src', data);
     });
 
+    // function savePhoto() {
+    //   $.ajax({
+    //     url: '',
+    //     method: 'post',
+    //     dataType: 'json'
+    //   })
+    // }
 
     // Wait until the video stream can play
     videoElement.addEventListener('canplay', function(e) {
@@ -61,27 +68,10 @@
     videoElement.addEventListener('play', function() {
       // Every 33 milliseconds copy the video image to the canvas
       setInterval(function() {
-        // if (videoElement.paused || videoElement.ended) return;
+        if (videoElement.paused || videoElement.ended) return;
         canvas.getContext('2d').fillRect(0, 0, width, height);
         canvas.getContext('2d').drawImage(videoElement, 0, 0, width, height);
       }, 33);
     }, false);
-
-    // function takePhoto() {
-      // canvas.drawImage(videoElement, 0, 0, width, height);
-      // videoElement.setAttribute('width', width);
-      // videoElement.setAttribute('height', height);
-      // canvas.setAttribute('width', width);
-      // canvas.setAttribute('height', height);
-      // var data = canvas.toDataURL('image/jpeg');
-      // photo.setAttribute('src', data);
-    // }
-
-    // photo.addEventListener('click', takePhoto);
-
-    // photoButton.addEventListener('click', function(e){
-    //   takePhoto();
-    //   e.preventDefault();
-    // }, false);
   })
 })();
