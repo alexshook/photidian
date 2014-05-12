@@ -8,7 +8,8 @@
       videoStream = { video: true, audio: false },
       photo = document.getElementById('photo'),
       photoButton = document.getElementById('take-photo'),
-      startButton = document.getElementById('start');
+      startButton = document.getElementById('start'),
+      data;
 
     startButton.addEventListener('click', function() {
       // Cross browser compatibility with one variable
@@ -30,11 +31,11 @@
     });
 
     photoButton.addEventListener('click', function() {
-      canvas.getContext('2d').drawImage(videoElement, 0, 0, width, height);
       videoElement.setAttribute('width', width);
       videoElement.setAttribute('height', height);
       canvas.setAttribute('width', width);
       canvas.setAttribute('height', height);
+      canvas.getContext('2d').drawImage(videoElement, 0, 0, width, height);
       var data = canvas.toDataURL('image/jpeg');
       photo.setAttribute('src', data);
     });
@@ -60,7 +61,7 @@
     videoElement.addEventListener('play', function() {
       // Every 33 milliseconds copy the video image to the canvas
       setInterval(function() {
-        if (videoElement.paused || videoElement.ended) return;
+        // if (videoElement.paused || videoElement.ended) return;
         canvas.getContext('2d').fillRect(0, 0, width, height);
         canvas.getContext('2d').drawImage(videoElement, 0, 0, width, height);
       }, 33);
