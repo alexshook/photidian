@@ -4,6 +4,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs form-group">
+
+    <%= f.file_field :avatar %>
+
     <%= f.input :email, required: true, autofocus: true, class: 'form-control' %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
