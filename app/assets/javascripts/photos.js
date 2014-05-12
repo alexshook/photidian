@@ -1,65 +1,86 @@
 (function() {
-
   window.addEventListener('DOMContentLoaded', function() {
     var isStreaming = false,
-      v = document.getElementById('v'),
-      c = document.getElementById('c'),
-      grey = document.getElementById('grey');
-      con = c.getContext('2d');
-      w = 600,
-      h = 420,
-      greyscale = false;
+      videoElement = document.getElementById('vid'),
+      canvas = document.getElementById('can'),
+      width = 600,
+      height = 420,
+      videoStream = { video: true, audio: false },
+      photo = document.getElementById('photo'),
+      photoButton = document.getElementById('take-photo'),
+      startButton = document.getElementById('start');
 
-    // Cross browser
-    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-    if (navigator.getUserMedia) {
-      // Request access to video only
-      navigator.getUserMedia(
-        {
-          video:true,
-          audio:false
-        },
-        function(stream) {
-          // Cross browser checks
-          var url = window.URL || window.webkitURL;
-              v.src = url ? url.createObjectURL(stream) : stream;
+    startButton.addEventListener('click', function() {
+      // Cross browser compatibility with one variable
+      navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+
+      if (navigator.getUserMedia) {
+        navigator.getUserMedia(videoStream, function(stream) {
+            // Cross browser checks
+            var url = window.URL || window.webkitURL;
+              videoElement.src = url ? url.createObjectURL(stream) : stream;
               // Set the video to play
-              v.play();
-        },
-        function(error) {
-          alert('Something went wrong. (error code ' + error.code + ')');
-          return;
-        }
-      );
-    }
-    else {
-      alert('Sorry, the browser you are using doesn\'t support getUserMedia');
-      return;
-    }
+              videoElement.play();
+          },
+          function(error) {
+            alert('Sorry, the browser you are using doesn\'t support getUserMedia');
+            // return;
+        });
+      }
+    });
+
+    photoButton.addEventListener('click', function() {
+      canvas.getContext('2d').drawImage(videoElement, 0, 0, width, height);
+      videoElement.setAttribute('width', width);
+      videoElement.setAttribute('height', height);
+      canvas.setAttribute('width', width);
+      canvas.setAttribute('height', height);
+      var data = canvas.toDataURL('image/jpeg');
+      photo.setAttribute('src', data);
+    });
+
 
     // Wait until the video stream can play
-    v.addEventListener('canplay', function(e) {
+    videoElement.addEventListener('canplay', function(e) {
         if (!isStreaming) {
           // videoWidth isn't always set correctly in all browsers
-          if (v.videoWidth > 0) h = v.videoHeight / (v.videoWidth / w);
-        c.setAttribute('width', w);
-        c.setAttribute('height', h);
+          if (videoElement.videoWidth > 0) height = videoElement.videoHeight / (videoElement.videoWidth / width);
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        videoElement.setAttribute('width', width);
+        videoElement.setAttribute('height', height);
         // Reverse the canvas image
-        con.translate(w, 0);
-          con.scale(-1, 1);
-            isStreaming = true;
+        canvas.getContext('2d').translate(width, 0);
+        canvas.getContext('2d').scale(-1, 1);
+        isStreaming = true;
         }
     }, false);
 
     // Wait for the video to start to play
-    v.addEventListener('play', function() {
+    videoElement.addEventListener('play', function() {
       // Every 33 milliseconds copy the video image to the canvas
       setInterval(function() {
-        if (v.paused || v.ended) return;
-        con.fillRect(0, 0, w, h);
-        con.drawImage(v, 0, 0, w, h);
+        if (videoElement.paused || videoElement.ended) return;
+        canvas.getContext('2d').fillRect(0, 0, width, height);
+        canvas.getContext('2d').drawImage(videoElement, 0, 0, width, height);
       }, 33);
     }, false);
 
+    // function takePhoto() {
+      // canvas.drawImage(videoElement, 0, 0, width, height);
+      // videoElement.setAttribute('width', width);
+      // videoElement.setAttribute('height', height);
+      // canvas.setAttribute('width', width);
+      // canvas.setAttribute('height', height);
+      // var data = canvas.toDataURL('image/jpeg');
+      // photo.setAttribute('src', data);
+    // }
+
+    // photo.addEventListener('click', takePhoto);
+
+    // photoButton.addEventListener('click', function(e){
+    //   takePhoto();
+    //   e.preventDefault();
+    // }, false);
   })
 })();

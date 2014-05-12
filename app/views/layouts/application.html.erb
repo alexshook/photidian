@@ -8,7 +8,24 @@
 </head>
 <body>
   <%= render 'layouts/navbar' %>
-  <%= render 'layouts/carousel' %>
+  <!-- display the jumbotron only on index page -->
+  <% if current_page? root_path %>
+  <div class="jumbotron">
+    <div class="container">
+      <img src="http://placekitten.com/620/440">
+      <h2>Share your story with the world.</h2>
+    </div>
+  </div>
+  <% end %>
+  <!-- flash notice and alert for devise -->
+  <% if notice %>
+      <p class="notice alert-success"><%= notice %></p>
+    <% end %>
+
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+  <%#= render 'layouts/carousel' %>
   <div class='container'>
     <%= yield %>
   </div>
