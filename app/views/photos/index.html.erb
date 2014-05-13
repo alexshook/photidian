@@ -8,7 +8,7 @@
   <%#= f.hidden :name, :value => :key %>
   <%#= f.hidden :AWSkey, :value =>  %>
 <%# end %>
-<form action="https://#{ENV['PHOTIDIAN_BUCKET_NAME']}.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+<form action="https://#{ENV['PHOTIDIAN_BUCKET_NAME']}.s3.amazonaws.com/" method="post" enctype="multipart/form-data" class="upload-bro">
   <input type="hidden" name="key" value="key">
   <input type="hidden" name="AWSAccessKeyId" value="#{ENV['AWS_ACCESS_KEY_ID']}" />
   <input type="hidden" name="acl" value="public-read">

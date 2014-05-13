@@ -4,12 +4,12 @@ class PhotosController < ApplicationController
 
   end
 
-  def json
+  def test_methods
     render json: {
       policy: s3_upload_policy_document,
       signature: s3_upload_signature,
       # check the params hash
-      key: "uploads/#{current_user.id}/#{params[:file]}",
+      key: "uploads/#{current_user.id}/#{params[:data]}",
       success_action_redirect: '/'
     }
   end
