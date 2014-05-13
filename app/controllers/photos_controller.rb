@@ -8,6 +8,10 @@ class PhotosController < ApplicationController
       bucket = s3.buckets['photidian']
       # update the bucket ACL (access control)
       bucket.acl = :public_read
+      # get data from the js request
+      data = params[:file]
+      # do i need to set the file name?
+      S3Object.store(file, open(file), 'photidian')
 
     respond_to do |format|
       format.json { render json: return_data.to_json }

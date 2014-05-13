@@ -1,3 +1,4 @@
+// TODO refactor with JS sdk documentation
 (function() {
   window.addEventListener('DOMContentLoaded', function() {
     var isStreaming = false,
