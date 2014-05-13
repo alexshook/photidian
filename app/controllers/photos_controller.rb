@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
       bucket.acl = :public_read
       # get data from the js request
       data = params[:file]
-      # do i need to set the file name?
+      # do i need to set the file name? file_name? file?
       S3Object.store(file, open(file), 'photidian')
 
     respond_to do |format|

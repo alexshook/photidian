@@ -53,8 +53,6 @@
         method: 'post',
         dataType: 'json',
         data: {file: data},
-      }).done(function(data) {
-        console.log(data);
       });
     }
 
