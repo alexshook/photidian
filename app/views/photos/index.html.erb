@@ -9,34 +9,16 @@
   <%#= f.hidden :AWSkey, :value =>  %>
 <%# end %>
 <form action="https://#{ENV['PHOTIDIAN_BUCKET_NAME']}.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-  <!-- i think i need to set a file name- take from JS? -->
-  <input type="hidden" name="key" value="photos/">
+  <input type="hidden" name="key" value="key">
   <input type="hidden" name="AWSAccessKeyId" value="#{ENV['AWS_ACCESS_KEY_ID']}" />
   <input type="hidden" name="acl" value="public-read">
-  <input type="hidden" name="success_action_redirect" value="http://0.0.0.0:3000">
-  <!-- tags? don't know if i need<input type="hidden" name="x-amz-meta-uuid" value="14365123651274" /> -->
-  <input type="hidden" name="Policy" value="#{ENV['AWS_POLICY']" />
-  <input type="hidden" name="Signature" value="SIGNATURE" />
+  <input type="hidden" name="Policy" value="policy" />
+  <input type="hidden" name="Signature" value="signature" />
+  <input type="hidden" name="success_action_redirect" value="http://0.0.0.0:3000/">
   <input type="hidden" name="Content-Type" value="image/jpeg">
-  <!-- <input type="file" name="file" /> <br /> -->
-  <input type="submit" name="submit" value="Upload to Amazon S3" />
-  </form>
-
-<!--   <form action="https://s3-bucket.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="key" value="uploads/${filename}">
-    <input type="hidden" name="AWSAccessKeyId" value="YOUR_AWS_ACCESS_KEY">
-    <input type="hidden" name="acl" value="private">
-    <input type="hidden" name="success_action_redirect" value="http://localhost/">
-    <input type="hidden" name="policy" value="YOUR_POLICY_DOCUMENT_BASE64_ENCODED">
-    <input type="hidden" name="signature" value="YOUR_CALCULATED_SIGNATURE">
-    <input type="hidden" name="Content-Type" value="image/jpeg">
-    <!-- Include any additional input fields here -->
-
-<!--     File to upload to S3:
-    <input name="file" type="file">
-    <br>
-    <input type="submit" value="Upload File to S3">
-  </form> -->
+  <input type="hidden" name="file" value="data"/>
+  <input type="submit" name="submit" id="upload-button" value="Upload to Amazon S3" />
+</form>
 
 <!--       "expiration": "2020-01-01T00:00:00Z",
       "conditions":
@@ -51,6 +33,5 @@
  -->
 <!-- <button id="upload-button">Upload to S3</button> -->
 <canvas id='can'></canvas>
-
 
 <img src="http://placekitten.com/600/420" id="photo" alt="photo">
