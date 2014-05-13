@@ -40,13 +40,22 @@
       photo.setAttribute('src', data);
     });
 
-    // function savePhoto() {
-    //   $.ajax({
-    //     url: '',
-    //     method: 'post',
-    //     dataType: 'json'
-    //   })
-    // }
+    document.getElementById('upload-button').addEventListener('click', function() {
+      savePhoto();
+      console.log('im in upload!');
+    });
+
+    function savePhoto() {
+      console.log('im in savephoto!');
+      $.ajax({
+        url: '/save_photo',
+        method: 'post',
+        dataType: 'json',
+        data: {file: data},
+      }).done(function(data) {
+        console.log(data);
+      });
+    }
 
     // Wait until the video stream can play
     videoElement.addEventListener('canplay', function(e) {
