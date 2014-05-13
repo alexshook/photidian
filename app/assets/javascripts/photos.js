@@ -37,21 +37,45 @@
       canvas.setAttribute('height', height);
       canvas.getContext('2d').drawImage(videoElement, 0, 0, width, height);
       // encode the image
-      var data = canvas.toDataURL('image/jpeg');
+      // need to have this just be the jpeg, not the encoded
+      // var data = canvas.toDataURL('image/jpeg');
+      data = canvas.toBlob('image/jpeg');
       // set the image source to be the value of the encoded data variable
       photo.setAttribute('src', data);
     });
 
-    document.getElementById('upload-button').addEventListener('click', function() {
-      $.ajax({
-        url: '/save_photo',
-        method: 'post',
-        dataType: 'json',
-        data: { file: photo.src }
-      });
-      // savePhoto();
-      console.log('you clicked the upload button!');
-    });
+    // document.getElementsByClassName('upload-button').addEventListener('click', function() {
+    //   url: form.attr('action'),
+    //   type: 'POST',
+    //   autoUpload: true,
+    //   dataType: 'xml',
+    //   add: function(event, data) {
+    //     $.ajax({
+    //       url: '/photos',
+    //       method: 'get'
+    //       dataType: 'json'
+    //       data: { file: photo.src }
+    //       async: false,
+    //       success: function(data) {
+    //         form.find('input[name=key']).val(data.key)
+    //         form.find('input[name=policy]').va(data.policy)
+    //         form.find('input[name=signature]').val(data.signature)
+    //       }
+    //     })
+    //     data.submit();
+    //   }
+    // })
+
+    // document.getElementById('upload-button').addEventListener('click', function() {
+    //   $.ajax({
+    //     url: '/save_photo',
+    //     method: 'post',
+    //     dataType: 'json',
+    //     data: { file: photo.src }
+    //   });
+    //   // savePhoto();
+    //   console.log('you clicked the upload button!');
+    // });
 
     // function savePhoto() {
     //   $.ajax({
