@@ -11,7 +11,8 @@ class PhotosController < ApplicationController
       # get data from the js request
       data = params[:file]
       # do i need to set the file name? file_name? file?
-      S3Object.store(file, open(file), 'photidian')
+      # S3Object.store(data, open(data), 'photidian')
+      obj = bucket.objects['key'].write(data)
 
     respond_to do |format|
       format.json { render json: return_data.to_json }

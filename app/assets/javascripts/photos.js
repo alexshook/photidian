@@ -9,8 +9,8 @@
       videoStream = { video: true, audio: false },
       photo = document.getElementById('photo'),
       photoButton = document.getElementById('take-photo'),
-      startButton = document.getElementById('start'),
-      data;
+      startButton = document.getElementById('start');
+    var data;
 
     startButton.addEventListener('click', function() {
       // Cross browser compatibility with one variable
@@ -37,24 +37,32 @@
       canvas.setAttribute('width', width);
       canvas.setAttribute('height', height);
       canvas.getContext('2d').drawImage(videoElement, 0, 0, width, height);
+      // encode the image
       var data = canvas.toDataURL('image/jpeg');
+      // set the image source to be the value of the encoded data variable
       photo.setAttribute('src', data);
     });
 
     document.getElementById('upload-button').addEventListener('click', function() {
-      savePhoto();
-      console.log('im in upload!');
-    });
-
-    function savePhoto() {
-      console.log('im in savephoto!');
       $.ajax({
         url: '/save_photo',
         method: 'post',
         dataType: 'json',
-        data: {file: data},
+        data: { file: photo.src }
       });
-    }
+      // savePhoto();
+      console.log('you clicked the upload button!');
+    });
+
+    // function savePhoto() {
+    //   $.ajax({
+    //     url: '/save_photo',
+    //     method: 'post',
+    //     dataType: 'json',
+    //     data: {file: data},
+    //   });
+    //   console.log('im in savephoto!');
+    // }
 
     // Wait until the video stream can play
     videoElement.addEventListener('canplay', function(e) {
