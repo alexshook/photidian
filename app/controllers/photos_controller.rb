@@ -1,18 +1,26 @@
 class PhotosController < ApplicationController
 
+  def show
+
+  end
+
   def save_photo
     # from the AWS S3 documentation
       # access environment variables for AWS S3
       s3 = Photo.aws_request
       # grab the bucket for photidian app
-      bucket = s3.buckets['photidian']
+      bucket = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']]
       # update the bucket ACL (access control)
       bucket.acl = :public_read
       # get data from the js request
       data = params[:file]
-      # do i need to set the file name? file_name? file?
-      # S3Object.store(data, open(data), 'photidian')
-      obj = bucket.objects['key'].write(data)
+      # name the file with username and current date and time
+      file_name = "#{current_user.username}_" + Time.now.to_s.gsub(" ", "_")
+      # create the object for s3
+      bucket.objects.create(file_name, data)
+      # obj = bucket.objects['key'].write(data)
+      # don't know if this is necessary
+      return_data = {file: data}
 
     respond_to do |format|
       format.json { render json: return_data.to_json }
