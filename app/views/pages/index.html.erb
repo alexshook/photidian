@@ -1,1 +1,22 @@
 <h3>photodian index page</h3>
+
+<%= javascript_include_tag 'index' %>
+
+<% if user_signed_in? %>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Welcome, <%= current_user.username %>!</h4>
+      </div>
+      <div class="modal-body">
+        It has been NUMBER days since you have logged in. Would you like to take a photo today?
+      </div>
+      <div class="modal-footer">
+        <%= button_to "Take a photo!", photos_path, method: :get, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

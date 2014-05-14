@@ -48,20 +48,10 @@
         method: 'post',
         dataType: 'json',
         data: { file: photo.src }
+      }).done(function() {
+        window.location.href = "/photos";
       });
-      // savePhoto();
-      console.log('you clicked the upload button!');
     });
-
-    // function savePhoto() {
-    //   $.ajax({
-    //     url: '/save_photo',
-    //     method: 'post',
-    //     dataType: 'json',
-    //     data: {file: data},
-    //   });
-    //   console.log('im in savephoto!');
-    // }
 
     // Wait until the video stream can play
     videoElement.addEventListener('canplay', function(e) {
