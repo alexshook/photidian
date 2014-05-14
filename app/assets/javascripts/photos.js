@@ -3,7 +3,7 @@
     var isStreaming = false,
       videoElement = document.getElementById('vid'),
       canvas = document.getElementById('can'),
-      width = 600,
+      width = 500,
       height = 420,
       videoStream = { video: true, audio: false },
       photo = document.getElementById('photo'),
@@ -49,7 +49,7 @@
         dataType: 'json',
         data: { file: photo.src }
       }).done(function() {
-        window.location.href = "/photos";
+        $('#s3-save').modal('show');
       });
     });
 

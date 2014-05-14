@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// video#vid {
-//   border: 5px solid #000;
-// }
+.buttons {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.video-canvas {
+  margin: 0 auto;
+}
+
+.snapshot {
+  margin: 0 auto;
+}

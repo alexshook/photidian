@@ -13,8 +13,3 @@
  *= require_self
  *= require_tree .
  */
-
-video {
-   position:absolute;
-   visibility:hidden;
-}

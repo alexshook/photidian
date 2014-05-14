@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
-  def show
-    @user_photos = Photo.get_photos(current_user.username)
+  def index
+    @user = current_user
   end
 
   def save_photo
@@ -16,10 +16,14 @@ class PhotosController < ApplicationController
       data = params[:file]
       # name the file with username and current date and time
       file_name = "#{current_user.username}/" + Time.now.to_s.gsub(" ", "_") + ".jpg"
-      # create the object for s3i
+      # create the object for s3
       bucket.objects.create(file_name, data)
       # check response from s3
       return_data = {file: data}
+
+    respond_to do |format|
+      format.json { render json: return_data.to_json }
+    end
   end
 
 end

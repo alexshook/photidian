@@ -1,7 +1,7 @@
 <h3><%= @user.first_name %></h3>
 <p><%= @user.username %></p>
 
-<% if current_user %>
+<% if @user == current_user %>
 <%= link_to 'Edit Profile', edit_user_registration_path %>
 <% end %>
 
@@ -9,3 +9,6 @@
   <%= image_tag @user.avatar.url(:medium), class: 'user-profile' %>
 </div>
 
+<% @user_photos.each do |photo| %>
+  <p><img src="<%= photo %>"></p>
+<% end %>
