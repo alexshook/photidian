@@ -16,14 +16,10 @@ class PhotosController < ApplicationController
       data = params[:file]
       # name the file with username and current date and time
       file_name = "#{current_user.username}/" + Time.now.to_s.gsub(" ", "_") + ".jpg"
-      # create the object for s3
+      # create the object for s3i
       bucket.objects.create(file_name, data)
       # check response from s3
       return_data = {file: data}
-
-    respond_to do |format|
-      format.json { render json: return_data.to_json }
-    end
   end
 
 end

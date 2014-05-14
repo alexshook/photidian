@@ -3,8 +3,23 @@
 <video id='vid'></video>
 <button id='start'>Start Camera!</button>
 <button id='take-photo'>Take Photo!</button>
-<button id="upload-button">Upload to S3</button>
-<canvas id='can'></canvas>
 
+<%#= form_tag({ action: "http://#{ENV['PHOTIDIAN_BUCKET_NAME']}"}, multipart: true, method: 'post', class: 'direct-upload' do %>
+  <%#= f.hidden :name, :value => :key %>
+  <%#= f.hidden :AWSkey, :value =>  %>
+<%# end %>
+<form action="https://#{ENV['PHOTIDIAN_BUCKET_NAME']}.s3.amazonaws.com/" method="post" enctype="multipart/form-data" class="upload-bro">
+  <input type="hidden" name="key" value="key">
+  <input type="hidden" name="AWSAccessKeyId" value="#{ENV['AWS_ACCESS_KEY_ID']}" />
+  <input type="hidden" name="acl" value="public-read">
+  <input type="hidden" name="Policy" value="policy" />
+  <input type="hidden" name="Signature" value="signature" />
+  <input type="hidden" name="success_action_redirect" value="http://0.0.0.0:3000/">
+  <input type="hidden" name="Content-Type" value="image/jpeg">
+  <input type="hidden" name="file" value="data"/>
+  <input type="submit" name="submit" id="upload-button" value="Upload to Amazon S3" />
+</form>
+
+<canvas id='can'></canvas>
 
 <img src="http://placekitten.com/600/420" id="photo" alt="photo">

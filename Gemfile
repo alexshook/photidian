@@ -51,6 +51,8 @@ gem 'paperclip', '~> 4.1.1'
 gem 'rmagick', '~> 2.13.2'
 gem 'aws-sdk', '~> 1.40.0'
 gem 'dotenv-rails', '~> 0.11.1'
+gem 'jquery-fileupload-rails', '~> 0.4.1'
+gem 'puma', '~> 2.8.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
