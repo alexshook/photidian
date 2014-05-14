@@ -44,5 +44,3 @@ class User < ActiveRecord::Base
 
   end
 end
-
-# need to handle getting photos a different way-- don't use current user because it can only get the current user's files
