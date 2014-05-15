@@ -1,0 +1,8 @@
+<div id='welcome'>
+  <% if current_user == @user %>
+    <h4>Welcome, <%= current_user.username %>!</h4>
+    <p>You last signed in at <%= current_user.last_sign_in_at.to_formatted_s(:long) %>. Would you like to take a photo?</p>
+    <div><%= button_to "Take a photo!", new_photo_path, method: :get, class: 'btn btn-primary' %></div>
+    <div><%= button_tag "Maybe later", class: 'btn btn-primary close-welcome' %></div>
+  <% end %>
+</div>

@@ -16,6 +16,7 @@
     <%= f.input :first_name, class: 'form-control' %>
     <%= f.input :last_name, class: 'form-control' %>
     <%= f.input :location, :placeholder => "ex. US, New York, London", class: 'form-control' %>
+    <%= f.input :bio, as: :text, :placeholder => 'Tell us about yourself!', class: 'form-control' %>
     <%= f.input :current_password, hint: "Enter your password to confirm your changes", required: true, class: 'form-control' %>
 
     <h4>Change Password</h4>
