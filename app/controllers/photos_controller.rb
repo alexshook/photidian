@@ -4,7 +4,8 @@ class PhotosController < ApplicationController
     @user = current_user
   end
 
-  def save_photo
+  def create
+    @photo = Photo.new
     # from the AWS S3 documentation
       # access environment variables for AWS S3
       s3 = User.aws_request
@@ -15,11 +16,17 @@ class PhotosController < ApplicationController
       # get data from the js request
       data = params[:file]
       # name the file with username and current date and time
-      file_name = "#{current_user.username}/" + Date.today.to_s.gsub(" ", "_") + ".jpg"
+      file_name = "#{current_user.username}/" + Time.now.to_s.gsub(" ", "_") + ".jpg"
       # create the object for s3
       bucket.objects.create(file_name, data)
-      # check response from s3
-      return_data = {file: data}
+
+    # save photo and user params to the db
+    @photo.img_url = file_name
+    @photo.user_id = current_user.id
+    @photo.save
+
+    # check response from s3
+    return_data = {file: data}
 
     respond_to do |format|
       format.json { render json: return_data.to_json }

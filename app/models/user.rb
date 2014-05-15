@@ -49,6 +49,42 @@ class User < ActiveRecord::Base
     return data_array
   end
 
+  # def db_photos
+  #   s3 = User.aws_request
+  #   photo_array = []
+  #   photos = self.photos
+
+  #   # FIXME how can i return the object with attributes + binary data that can be rendered in views
+  #   photos.map do |photo|
+  #     obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{photo.img_url}"]
+  #     k = obj.key
+  #     photo_array << obj.read
+  #   end
+  #   return photo_array
+  # end
+
+  # def db_photos
+  #   photos = self.photos
+  #     photos.map do |photo|
+  #       photo_hash = {}
+  #       # FIXME need to hit s3 to get photo.img_url.read to work
+  #       photo_hash[photo] = photo.img_url.read
+  #     end
+  #   return photo_hash
+  # end
+
+  def db_photos
+    s3 = User.aws_request
+    photos = self.photos
+    photo_hash = {}
+      photos.map do |photo|
+        obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{photo.img_url}"]
+        # FIXME i think this is working but i need to parse the hash in the views
+        photo_hash[photo] = obj.read
+      end
+    return photo_hash
+  end
+
   def following?(user)
     self.relationships.find_by(following_id: user.id)
   end

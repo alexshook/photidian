@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @user_photos = User.get_photos(@user.username)
+    # @user_photos = User.get_photos(@user.username)
+    @photos = @user.db_photos
   end
 
 private

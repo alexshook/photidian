@@ -31,8 +31,14 @@
   <%= image_tag @user.avatar.url(:medium), class: 'user-profile' %>
 </div>
 
-<% @user_photos.each do |photo| %>
-  <p><img src="<%= photo %>"></p>
+<!-- <%# @photos.each do |photo| %>
+  <div class="photo-date"><%#= photo.created_at %></div>
+  <div class="photo-img"><img src="<%#= photo %>"></div>
+<%# end %> -->
+
+<% @photos.map do |key, photo| %>
+  <%= key.created_at %>
+  <img src="<%= photo %>" %>
 <% end %>
 
 <% if current_user == user_signed_in? %>

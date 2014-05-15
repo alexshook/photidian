@@ -44,7 +44,7 @@
 
     document.getElementById('upload-button').addEventListener('click', function() {
       $.ajax({
-        url: '/save_photo',
+        url: '/photos',
         method: 'post',
         dataType: 'json',
         data: { file: photo.src }

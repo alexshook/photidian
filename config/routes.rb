@@ -9,8 +9,7 @@ Photodian::Application.routes.draw do
     end
   end
 
-  post 'save_photo' => 'photos#save_photo'
-  resources :photos, only: [:index, :show]
+  resources :photos, only: [:index, :show, :create]
 
   resources :relationships, only: [:create, :destroy]
 end
