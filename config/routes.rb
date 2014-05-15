@@ -9,7 +9,7 @@ Photodian::Application.routes.draw do
     end
   end
 
-  resources :photos, only: [:index, :show, :create]
+  resources :photos, only: [:index, :show, :new, :create]
 
   resources :relationships, only: [:create, :destroy]
 end

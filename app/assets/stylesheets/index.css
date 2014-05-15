@@ -1,3 +1,49 @@
-.small {
-  font-color: #000;
+.jumbotron {
+  width: 100%;
+  height: 670px;
+  max-height: 50%;
+  background-image: url('https://farm8.staticflickr.com/7449/14007575527_67bf672ccb_o.jpg');
+}
+
+.index-page {
+  margin-top: 18%;
+  margin-left: 2%;
+}
+
+.cir-small {
+  color: #000;
+  font-size: 48px;
+}
+
+.cir-xs {
+  color: #000;
+  font-size: 28px;
+}
+
+.jumbotron {
+  width: 100%;
+  height: 670px;
+  max-height: 50%;
+  background-image: url('https://farm8.staticflickr.com/7449/14007575527_67bf672ccb_o.jpg');
+}
+
+.index-page {
+  margin-top: 18%;
+  margin-left: 2%;
+}
+
+.cir-small {
+  color: #000;
+  font-size: 48px;
+}
+
+.about {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.about p {
+  font-size: 16px;
+  padding: 5px;
+  padding: .5rem;
 }

@@ -14,7 +14,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to "a photo a day", '/pages/about' %></li>
         <li><%= link_to "about", '/pages/about' %></li>
       </ul>
       <!-- begin right navbar -->
@@ -24,7 +23,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <%= current_user.first_name %>! <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><%= link_to "My Profile", user_path(current_user) %></li>
-            <li><%= link_to "Take a Portrait", photos_path %></li>
+            <li><%= link_to "Take a Portrait", new_photo_path %></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: 'delete' %></li>

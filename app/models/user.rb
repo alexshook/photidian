@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
       :medium => "300x300>",
       :thumb => "100x100>"
     },
-      :default_url => "http://lorempixel.com/500/500/people"
+      :default_url => "http://placeimg.com/500/500/people"
 
   # validate s3 file upload - must come after has_attached_file
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/

@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <% @user.following.each do |following| %>
-          <%= image_tag following.avatar.url(:thumb) %> <%= link_to following.username, user_path(following.id) %>
+          <div><%= image_tag following.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to following.username, user_path(following.id) %></div>
         <% end %>
       </div>
       <div class="modal-footer">
