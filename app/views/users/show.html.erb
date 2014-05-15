@@ -9,6 +9,10 @@
   <p><%= @user.location %></p>
 <% end %>
 
+<% if @user == current_user %>
+  <%= link_to 'Edit Profile', edit_user_registration_path %>
+<% end %>
+
 <% unless current_user == @user %>
   <div id="follow_form">
   <% if current_user.following?(@user) %>
@@ -19,22 +23,17 @@
   </div>
 <% end %>
 
-<%#= button_to 'Followers', data: { toggle: 'modal', target: '#followers-modal' }, method: :get, id: 'followers-button', class: 'btn btn-default' %>
-<button id='followers-button' class='btn btn-default' data-toggle='modal', data-target='#followers-modal'>Followers</button>
-
-<% if @user == current_user %>
-<%= link_to 'Edit Profile', edit_user_registration_path %>
-<% end %>
+<%= button_tag 'Followers', data: { toggle: 'modal', target: '#followers-modal' }, method: :get, id: 'followers-button', class: 'btn btn-default' %>
 
 <div>
   <%= image_tag @user.avatar.url(:medium), class: 'user-profile' %>
 </div>
 
 <% @display_photos.map do |key, photo| %>
-  <div class="display-photo">
+  <%= div_for key do %>
     <%= key.created_at.to_formatted_s(:long)  %>
     <img src="<%= photo %>" %>
-  </div>
+  <% end %>
 <% end %>
 
 <% if current_user == user_signed_in? %>
@@ -46,7 +45,7 @@
         <h4 class="modal-title" id="myModalLabel">Welcome, <%= current_user.username %>!</h4>
       </div>
       <div class="modal-body">
-        You last signed in at <%= last_sign_in_at %>. Would you like to take a photo today?
+        You last signed in at <%= last_sign_in_at %>. Would you like to take a photo?
       </div>
       <div class="modal-footer">
         <%= button_to "Take a photo!", photos_path, method: :get, class: 'btn btn-primary' %>
@@ -58,4 +57,8 @@
 
 <div id="#followers-modal">
   <%= render :template => 'users/_followers' %>
+</div>
+
+<div id="#following-modal">
+  <%= render :template => 'users/_following' %>
 </div>
