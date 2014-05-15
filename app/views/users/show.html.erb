@@ -1,3 +1,7 @@
+<!-- <div id="#welcome">
+  <%#= render :template => 'users/_welcome' %>
+</div> -->
+
 <div id='user-profile' class='col-md-4'>
   <div class='user-text-profile'>
     <% if @user.first_name == nil %>
@@ -40,32 +44,16 @@
 
 </div> <!-- end user profile -->
 
+<!-- begin display photos from s3 -->
 <div id='user-camera-photos' class='col-md-8'>
   <% @display_photos.map do |key, photo| %>
     <%= div_for key do %>
-      <%= key.created_at.to_formatted_s(:long)  %>
+      <div class='photo-created-at'>
+        <%= key.created_at.to_formatted_s(:long) %>
+      </div>
       <img src="<%= photo %>" %>
     <% end %>
-  <% end %>
-
-  <% if current_user == user_signed_in? %>
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Welcome, <%= current_user.username %>!</h4>
-        </div>
-        <div class="modal-body">
-          You last signed in at <%= last_sign_in_at %>. Would you like to take a photo?
-        </div>
-        <div class="modal-footer">
-          <%= button_to "Take a photo!", photos_path, method: :get, class: 'btn btn-primary' %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end %>
+  <% end %> <!-- end display photos from s3 -->
 
 </div>
 

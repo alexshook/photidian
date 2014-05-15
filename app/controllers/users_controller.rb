@@ -14,12 +14,11 @@ class UsersController < ApplicationController
       format.html
       format.js
     end
-
   end
 
 private
   def user_params
-    params.require(:user).permit(:avatar, :username, :first_name, :last_name,:location, :avatar, :password, :password_confirmation, :current_password, :follower_id, :following_id)
+    params.require(:user).permit(:avatar, :username, :first_name, :last_name,:location, :bio, :avatar, :password, :password_confirmation, :current_password, :follower_id, :following_id)
   end
 
 end
