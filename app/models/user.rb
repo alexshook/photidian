@@ -5,6 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable
   validates :username, presence: true
 
+  # associations
+  has_many :photos
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  # builds user.following to get the users the user is following
+  has_many :following, through: :relationships
+  has_many :reverse_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
+  # builds user.followers to get the users who are following the user
+  has_many :followers, through: :reverse_relationships
+
   has_attached_file :avatar,
     :storage => :s3,
     :url => ":s3_domain_url",
@@ -40,7 +49,16 @@ class User < ActiveRecord::Base
     return data_array
   end
 
-  def order_photos
-
+  def following?(user)
+    self.relationships.find_by(following_id: user.id)
   end
+
+  def follow(user)
+    self.relationships.create!(following_id: user.id)
+  end
+
+  def unfollow(user)
+    self.relationships.find_by(following_id: user.id).destroy!
+  end
+
 end

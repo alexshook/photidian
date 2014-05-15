@@ -1,0 +1,4 @@
+<%= simple_form_for current_user.relationships.build(following_id: @user.id), remote: true do |f| %>
+  <div><%= f.input :following_id, :as => :hidden, :input_html => { :value => @user.id } %></div>
+  <%= f.submit 'Follow', class: 'btn btn-md btn-primary' %>
+<% end %>
