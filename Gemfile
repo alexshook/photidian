@@ -53,12 +53,7 @@ gem 'aws-sdk', '~> 1.40.0'
 gem 'dotenv-rails', '~> 0.11.1'
 gem 'puma', '~> 2.8.2'
 gem 'jquery-ui-rails', '~> 4.2.1'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'font-awesome-rails', '~> 4.1.0.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

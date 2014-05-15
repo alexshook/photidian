@@ -1,8 +1,16 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable
+  devise  :database_authenticatable,
+          :registerable,
+          :recoverable,
+          :rememberable,
+          :trackable,
+          :validatable,
+          :confirmable,
+          :lockable,
+          :timeoutable
+
   validates :username, presence: true
 
   # associations
@@ -23,63 +31,28 @@ class User < ActiveRecord::Base
       :medium => "300x300>",
       :thumb => "100x100>"
     },
-      :default_url => "http://placekitten.com/300/300"
+      :default_url => "http://placekitten.com/100/100"
 
   # validate s3 file upload - must come after has_attached_file
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  # get s3 credentials for paperclip
   def s3_credentials
     {:bucket => ENV['PHOTIDIAN_BUCKET_NAME'], :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']}
   end
 
-  # configure AWS environment variables for S3
+  # get AWS environment variables for S3 camera photo storage
   def self.aws_request
     return AWS::S3.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
   end
 
-  # get objects from s3, read objects so they can display as images
-  def self.get_photos(user)
-    s3 = User.aws_request
-    bucket = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']]
-
-    data_array = []
-    bucket.objects.with_prefix(user).collect do |key|
-      data_array << key.read
-    end
-    return data_array
-  end
-
-  # def db_photos
-  #   s3 = User.aws_request
-  #   photo_array = []
-  #   photos = self.photos
-
-  #   # FIXME how can i return the object with attributes + binary data that can be rendered in views
-  #   photos.map do |photo|
-  #     obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{photo.img_url}"]
-  #     k = obj.key
-  #     photo_array << obj.read
-  #   end
-  #   return photo_array
-  # end
-
-  # def db_photos
-  #   photos = self.photos
-  #     photos.map do |photo|
-  #       photo_hash = {}
-  #       # FIXME need to hit s3 to get photo.img_url.read to work
-  #       photo_hash[photo] = photo.img_url.read
-  #     end
-  #   return photo_hash
-  # end
-
+  # get database objects, return attributes and binary data from s3 for display
   def db_photos
     s3 = User.aws_request
     photos = self.photos
     photo_hash = {}
       photos.map do |photo|
         obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{photo.img_url}"]
-        # FIXME i think this is working but i need to parse the hash in the views
         photo_hash[photo] = obj.read
       end
     return photo_hash

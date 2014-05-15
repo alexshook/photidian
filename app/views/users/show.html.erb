@@ -19,9 +19,8 @@
   </div>
 <% end %>
 
-<% @user.followers.each do |follower| %>
-  <%= follower.username %>
-<% end %>
+<%#= button_to 'Followers', data: { toggle: 'modal', target: '#followers-modal' }, method: :get, id: 'followers-button', class: 'btn btn-default' %>
+<button id='followers-button' class='btn btn-default' data-toggle='modal', data-target='#followers-modal'>Followers</button>
 
 <% if @user == current_user %>
 <%= link_to 'Edit Profile', edit_user_registration_path %>
@@ -31,14 +30,11 @@
   <%= image_tag @user.avatar.url(:medium), class: 'user-profile' %>
 </div>
 
-<!-- <%# @photos.each do |photo| %>
-  <div class="photo-date"><%#= photo.created_at %></div>
-  <div class="photo-img"><img src="<%#= photo %>"></div>
-<%# end %> -->
-
-<% @photos.map do |key, photo| %>
-  <%= key.created_at %>
-  <img src="<%= photo %>" %>
+<% @display_photos.map do |key, photo| %>
+  <div class="display-photo">
+    <%= key.created_at.to_formatted_s(:long)  %>
+    <img src="<%= photo %>" %>
+  </div>
 <% end %>
 
 <% if current_user == user_signed_in? %>
@@ -59,3 +55,7 @@
   </div>
 </div>
 <% end %>
+
+<div id="#followers-modal">
+  <%= render :template => 'users/_followers' %>
+</div>
