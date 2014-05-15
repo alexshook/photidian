@@ -4,7 +4,7 @@
       videoElement = document.getElementById('vid'),
       canvas = document.getElementById('can'),
       width = 500,
-      height = 420,
+      height = 375,
       videoStream = { video: true, audio: false },
       photo = document.getElementById('photo'),
       photoButton = document.getElementById('take-photo'),
@@ -62,9 +62,6 @@
         canvas.setAttribute('height', height);
         videoElement.setAttribute('width', width);
         videoElement.setAttribute('height', height);
-        // Reverse the canvas image
-        canvas.getContext('2d').translate(width, 0);
-        canvas.getContext('2d').scale(-1, 1);
         isStreaming = true;
         }
     }, false);

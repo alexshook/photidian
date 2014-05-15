@@ -11,8 +11,24 @@
 
 .video-canvas {
   margin: 0 auto;
+  padding-top: 20px;
+  padding-top: 2rem;
+  padding-bottom: 20px;
+  padding-bottom: 2rem;
 }
 
 .snapshot {
   margin: 0 auto;
+  padding-top: 20px;
+  padding-top: 2rem;
+  padding-bottom: 20px;
+  padding-bottom: 2rem;
+}
+
+.inline {
+  display: block;
+}
+
+#can {
+  display: none;
 }
