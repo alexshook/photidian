@@ -10,6 +10,10 @@
     <% if @user.location != nil %>
       <p><%= @user.location %></p>
     <% end %>
+
+    <% if @user.bio != nil %>
+      <p><%= @user.bio %></p>
+    <% end %>
   </div>
 
   <div id='followers-button-wrapper'>
