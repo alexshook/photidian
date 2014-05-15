@@ -1,59 +1,69 @@
-<% if @user.first_name == nil %>
-  <h3><%= @user.username %></h3>
-<% else %>
-  <h3><%= @user.first_name %></h3>
-  <p><%= @user.username %></p>
-<% end %>
+<div id='user-profile' class='col-md-4'>
+  <div class='user-text-profile'>
+    <% if @user.first_name == nil %>
+      <h3><%= @user.username %></h3>
+    <% else %>
+      <h3><%= @user.first_name %></h3>
+      <p><%= @user.username %></p>
+    <% end %>
 
-<% if @user.location != nil %>
-  <p><%= @user.location %></p>
-<% end %>
-
-<% if @user == current_user %>
-  <%= link_to 'Edit Profile', edit_user_registration_path %>
-<% end %>
-
-<% unless current_user == @user %>
-  <div id="follow_form">
-  <% if current_user.following?(@user) %>
-    <%= render 'unfollow' %>
-  <% else %>
-    <%= render 'follow' %>
-  <% end %>
+    <% if @user.location != nil %>
+      <p><%= @user.location %></p>
+    <% end %>
   </div>
-<% end %>
 
-<%= button_tag 'Followers', data: { toggle: 'modal', target: '#followers-modal' }, method: :get, id: 'followers-button', class: 'btn btn-default' %>
+  <div id='followers-button-wrapper'>
+    <% unless current_user == @user %>
+      <div id="follow-form">
+      <% if current_user.following?(@user) %>
+        <%= render 'unfollow' %>
+      <% else %>
+        <%= render 'follow' %>
+      <% end %>
+      </div>
+    <% end %>
 
-<div>
-  <%= image_tag @user.avatar.url(:medium), class: 'user-profile' %>
-</div>
+    <%= button_tag 'Followers', data: { toggle: 'modal', target: '#followers-modal' }, method: :get, id: 'followers-button', class: 'btn btn-default' %>
+  </div>
 
-<% @display_photos.map do |key, photo| %>
-  <%= div_for key do %>
-    <%= key.created_at.to_formatted_s(:long)  %>
-    <img src="<%= photo %>" %>
+  <div class='user-avatar'>
+    <%= image_tag @user.avatar.url(:medium), class: 'user-avatar-wrapper' %>
+  </div>
+
+  <% if @user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_registration_path %>
   <% end %>
-<% end %>
 
-<% if current_user == user_signed_in? %>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Welcome, <%= current_user.username %>!</h4>
-      </div>
-      <div class="modal-body">
-        You last signed in at <%= last_sign_in_at %>. Would you like to take a photo?
-      </div>
-      <div class="modal-footer">
-        <%= button_to "Take a photo!", photos_path, method: :get, class: 'btn btn-primary' %>
+</div> <!-- end user profile -->
+
+<div id='user-camera-photos' class='col-md-8'>
+  <% @display_photos.map do |key, photo| %>
+    <%= div_for key do %>
+      <%= key.created_at.to_formatted_s(:long)  %>
+      <img src="<%= photo %>" %>
+    <% end %>
+  <% end %>
+
+  <% if current_user == user_signed_in? %>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Welcome, <%= current_user.username %>!</h4>
+        </div>
+        <div class="modal-body">
+          You last signed in at <%= last_sign_in_at %>. Would you like to take a photo?
+        </div>
+        <div class="modal-footer">
+          <%= button_to "Take a photo!", photos_path, method: :get, class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
   </div>
+  <% end %>
+
 </div>
-<% end %>
 
 <div id="#followers-modal">
   <%= render :template => 'users/_followers' %>

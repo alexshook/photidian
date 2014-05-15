@@ -3,11 +3,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel"><%= @user.username %>'s Followers</h4>
+        <h4 class="modal-title" id="myModalLabel">People Following <%= @user.username %></h4>
       </div>
       <div class="modal-body">
         <% @user.followers.each do |follower| %>
-          <%= image_tag follower.avatar.url(:thumb) %> <%= follower.username %>
+          <%= image_tag follower.avatar.url(:thumb) %> <%= link_to follower.username, user_path(follower.id) %>
         <% end %>
       </div>
       <div class="modal-footer">

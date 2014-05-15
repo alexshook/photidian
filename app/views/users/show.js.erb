@@ -1,9 +1,11 @@
-$("#followers-button").click(function() {
-  $('#followers-modal').modal('show');
-});
+$().ready(function() {
+  $("#followers-button").click(function() {
+    $('#followers-modal').modal('show');
+  });
 
-$("#following-button").click(function() {
-    $('#followers-modal').modal('hide');
-    $('#following-modal').modal('show');
+  $("#following-button").click(function() {
+      $('#followers-modal').modal('hide');
+      $('#following-modal').modal('show');
+  });
 });
 

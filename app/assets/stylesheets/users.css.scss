@@ -2,7 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.user-profile {
-  width: 300px;
+#user-profile {
+
+}
+
+.user-text-profile {
+  width: 50%;
+  float: left;
+}
+
+#followers-button-wrapper {
+  width: 50%;
+  float: right;
+  padding-top: 20px;
+  padding-top: 2rem;
+  padding-left: 15px;
+  padding-left: 1.5rem;
+}
+
+.user-avatar {
+
+}
+
+.user-avatar-wrapper {
+  width: 200px;
   border-radius: 50%;
 }
+
