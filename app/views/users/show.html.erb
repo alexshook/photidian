@@ -1,6 +1,13 @@
-<h3><%= @user.first_name %></h3>
-<p><%= @user.username %></p>
-<p><%= @user.location %></p>
+<% if @user.first_name == nil %>
+  <h3><%= @user.username %></h3>
+<% else %>
+  <h3><%= @user.first_name %></h3>
+  <p><%= @user.username %></p>
+<% end %>
+
+<% if @user.location != nil %>
+  <p><%= @user.location %></p>
+<% end %>
 
 <% unless current_user == @user %>
   <div id="follow_form">
@@ -10,6 +17,10 @@
     <%= render 'follow' %>
   <% end %>
   </div>
+<% end %>
+
+<% @user.followers.each do |follower| %>
+  <%= follower.username %>
 <% end %>
 
 <% if @user == current_user %>
