@@ -1,8 +1,11 @@
 require 'spec_helper'
 
-describe 'A user can sign in' do
-  it 'should sign in the user given a valid username and password' do
+describe "the signin process", :type => :feature do
+  before :each do
     User.create(username: Faker::Internet.user_name, email: 'als304@gmail.com', password: 'qwertyqwerty', password_confirmation: 'qwertyqwerty')
+  end
+
+  it "signs me in" do
     visit 'users/sign_in'
     fill_in 'Email', with: 'als304@gmail.com'
     fill_in 'Password', with: 'qwertyqwerty'

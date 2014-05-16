@@ -1,0 +1,7 @@
+<h1>Browse Users</h1>
+
+<% @users.each do |u| %>
+  <div class='all-users'>
+    <%= image_tag u.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to u.username, u %>
+  </div>
+<% end %>

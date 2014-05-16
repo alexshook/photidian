@@ -1,6 +1,12 @@
 <h2>Browse Photos</h2>
 
 <% @display_all_photos.each do |key, photo| %>
-  <%= key.user.username %>
-  <img src="<%= photo %>">
+  <div class='all-photos'>
+    <div>
+      <%= link_to key.user.username, key.user %>
+    </div>
+    <div>
+      <img src="<%= photo %>">
+    </div>
+  </div>
 <% end %>
