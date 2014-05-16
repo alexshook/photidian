@@ -1,13 +1,10 @@
 <h2>Browse Photos</h2>
-<div class='all-photos'>
+
+<div class='col-lg-10 all-photos whitespace-bottom'>
   <% @display_all_photos.each do |key, photo| %>
-      <div>
+      <div class="whitespace-bottom">
         <%= link_to key.user.username, key.user %>
-      </div>
-      <div>
         <img src="<%= photo %>">
       </div>
-    </div>
   <% end %>
-  <div calss="whitespace-bottom">
 </div>
