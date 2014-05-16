@@ -5,7 +5,19 @@ class PhotosController < ApplicationController
     @display_all_photos = Photo.all_db_photos
   end
 
+  def new
+    @tags = Tag.all
+    @photo = Photo.new
+  end
+
+  def show
+    @photo = Photo.find params[:id]
+    @user = @photo.user
+    @display_photo = @user.db_photo(@photo.img_url)
+  end
+
   def create
+    @tags = Tag.all
     @photo = Photo.new
     # from the AWS S3 documentation
       # access environment variables for AWS S3
@@ -32,6 +44,20 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.json { render json: return_data.to_json }
     end
+  end
+
+  def update
+    @photo = Photo.find params[:id]
+    if @photo.save photo_params
+      redirect_to @photo
+    else
+      flash[:notice] = "Sorry, something went wrong."
+    end
+  end
+
+  private
+  def photo_params
+    params.require(:photo).permit(:user_id, :photo_id, tag_ids:[])
   end
 
 end

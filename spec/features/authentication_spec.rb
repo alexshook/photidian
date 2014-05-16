@@ -13,4 +13,9 @@ describe "the signin process", :type => :feature do
     expect(page).to have_content 'My Profile'
   end
 
+  it "logs me out" do
+    visit 'users/sign_out'
+    expect(page).to have_content 'Signed out successfully.'
+  end
+
 end

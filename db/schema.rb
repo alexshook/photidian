@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514235459) do
+ActiveRecord::Schema.define(version: 20140516044452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20140514235459) do
     t.datetime "updated_at"
   end
 
+  create_table "photos_tags", id: false, force: true do |t|
+    t.integer "photo_id", null: false
+    t.integer "tag_id",   null: false
+  end
+
+  add_index "photos_tags", ["photo_id", "tag_id"], name: "index_photos_tags_on_photo_id_and_tag_id", using: :btree
+  add_index "photos_tags", ["tag_id", "photo_id"], name: "index_photos_tags_on_tag_id_and_photo_id", using: :btree
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "following_id"
@@ -31,6 +39,10 @@ ActiveRecord::Schema.define(version: 20140514235459) do
   end
 
   add_index "relationships", ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true, using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

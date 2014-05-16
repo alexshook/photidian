@@ -1,0 +1,13 @@
+<h1>Photo of <%= @photo.user.username %></h1>
+
+<img src="<%= @display_photo %>">
+
+<%= simple_form_for @photo do |f|%>
+  <%= f.association :tags, collection: Tag.all(order: 'name'), prompt: "Tag this Photo", class: 'form-control' %>
+  <%= f.input :photo_id, :as => :hidden, :input_html => { :value => @photo_id } %>
+  <%= f.submit "Add Tag", class: 'btn btn-primary' %>
+<% end %>
+
+<% @photo.tags.each do |tag| %>
+  <%= tag.name %>
+<% end %>

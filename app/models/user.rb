@@ -58,6 +58,13 @@ class User < ActiveRecord::Base
     return photo_hash
   end
 
+  def db_photo(db_string)
+    s3 = User.aws_request
+    obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{db_string}"]
+    read_obj = obj.read
+    return read_obj
+  end
+
   def following?(user)
     self.relationships.find_by(following_id: user.id)
   end

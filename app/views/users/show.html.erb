@@ -49,7 +49,7 @@
   <% @display_photos.map do |key, photo| %>
     <%= div_for key do %>
       <div class='photo-created-at'>
-        <%= key.created_at.to_formatted_s(:long) %>
+        <%= key.created_at.to_formatted_s(:long) %> - <%= link_to 'More Information', key %>
       </div>
       <img src="<%= photo %>", class: 'img-wrapper' %>
     <% end %>
