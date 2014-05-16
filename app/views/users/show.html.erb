@@ -1,4 +1,4 @@
-<!-- <div id="#welcome">
+<!-- <div id="welcome">
   <%#= render :template => 'users/_welcome' %>
 </div> -->
 
@@ -51,7 +51,7 @@
       <div class='photo-created-at'>
         <%= key.created_at.to_formatted_s(:long) %>
       </div>
-      <img src="<%= photo %>" %>
+      <img src="<%= photo %>", class: 'img-wrapper' %>
     <% end %>
   <% end %> <!-- end display photos from s3 -->
 
