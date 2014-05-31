@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @display_photos = @user.db_photos
+    @display_photos = @user.get_s3_photos
 
     respond_to do |format|
       format.html

@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   # get database objects, return attributes and binary data from s3 for display
-  def db_photos
+  def get_s3_photos
     s3 = User.aws_request
     photos = self.photos.order(:created_at).reverse_order
     photo_hash = {}
@@ -63,6 +63,14 @@ class User < ActiveRecord::Base
     obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{db_string}"]
     read_obj = obj.read
     return read_obj
+  end
+
+  def check_100_days
+    if self.photos.length < 100
+      return false
+    else
+      return true
+    end
   end
 
   def following?(user)
