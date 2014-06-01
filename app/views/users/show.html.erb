@@ -53,9 +53,15 @@
       </div>
       <img src="<%= photo %>", class: 'img-wrapper' %>
     <% end %>
-  <% end %> <!-- end display photos from s3 -->
+  <% end %>
+</div><!-- end display photos from s3 -->
 
-</div>
+<div id='user-camera-photos' class='col-md-8'>
+  <% @display_photos.map do |key, photo| %>
+    <%= div_for key do %>
+      <img src="<%= photo %>", class: 'img-wrapper' %>
+    <% end %>
+  <% end %>
 
 <div id="#followers-modal">
   <%= render :template => 'users/_followers' %>
