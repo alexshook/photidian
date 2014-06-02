@@ -13,5 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require underscore
+//= require backbone
+//= require_tree ./views
+//= require_tree ./models
+//= require_tree ./routers
 //= require_tree ./common
 //= require_self
+
+$().ready(function() {
+  console.log('loaded bro');
+  var photoAppRouter = new PhotoRouter();
+  Backbone.history.start();
+});

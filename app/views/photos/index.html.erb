@@ -1,10 +1,31 @@
-<h2>Browse Photos</h2>
+<div id="index" class='index-page'>
+  <h1>pho <%= fa_icon "circle", class: 'cir-lg' %> ti <%= fa_icon "circle", class: 'cir-lg' %>  di <%= fa_icon "circle", class: 'cir-lg' %> an</h1>
+  <h2><%= fa_icon "camera-retro" %> n. a photo a day</h2>
+  <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
+  <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
+  <button id="get-started" class='btn btn-primary'>Take Your First Photo</button>
+</div>
 
-<div class='col-lg-10 all-photos whitespace-bottom'>
-  <% @display_all_photos.each do |key, photo| %>
-      <div class="whitespace-bottom">
-        <%= link_to key.user.username, key.user %>
-        <img src="<%= photo %>">
-      </div>
-  <% end %>
+<script type="text/template" id="buttons-template">
+<div class='buttons'>
+  <button id='start' class='btn btn-primary'><%= fa_icon "camera-retro" %> Start Camera!</button>
+  <button id='take-photo' class='btn btn-primary'>Take Photo!</button>
+  <button id='upload-button' class='btn btn-primary'>Use this photo for <%= Date.today.to_formatted_s(:long) %>.</button>
+</div>
+</script>
+
+<div class="video-canvas col-md-6">
+  <video id='vid' width ='500' height='375'></video>
+</div>
+
+<div class="snapshot col-md-6">
+  <canvas id='can' width ='500' height='375'></canvas>
+  <img src="" id="photo">
+</div>
+
+<div class="tags-list">
+<div>
+
+<div id="#s3-save">
+  <%= render :template => 'photos/_modal' %>
 </div>

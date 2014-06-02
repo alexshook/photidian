@@ -1,5 +1,5 @@
 Photodian::Application.routes.draw do
-  root to: 'pages#index'
+  root to: 'photos#index'
   get 'pages/about'
 
   devise_for :users

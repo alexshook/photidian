@@ -2,8 +2,8 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @user = current_user
-    @display_all_photos = Photo.all_db_photos
+    # @user = current_user
+    # @display_all_photos = Photo.all_db_photos
   end
 
   def new

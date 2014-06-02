@@ -1,23 +1,20 @@
-.jumbotron {
-  width: 100%;
-  height: 670px;
-  max-height: 50%;
-  background-image: url('https://farm8.staticflickr.com/7449/14007575527_67bf672ccb_o.jpg');
+.index-page {
+  margin-top: 5%;
+  margin-left: 2%;
 }
 
-.index-page {
-  margin-top: 15%;
-  margin-left: 2%;
+.index-page h1 {
+  font-size: 52px;
+}
+
+.cir-lg {
+  color: #000;
+  font-size: 22px;
 }
 
 .cir-md {
   color: #000;
   font-size: 32px;
-}
-
-.cir-small {
-  color: #000;
-  font-size: 46px;
 }
 
 .cir-xs {
@@ -27,7 +24,7 @@
 
 .cir-xxs {
   color: #000;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .about {
