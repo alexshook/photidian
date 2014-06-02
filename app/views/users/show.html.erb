@@ -2,6 +2,8 @@
   <%#= render :template => 'users/_welcome' %>
 </div> -->
 
+<%= javascript_include_tag 'photos' %>
+
 <div id='user-profile' class='col-md-4'>
   <div class='user-text-profile'>
     <% if @user.first_name == nil %>
@@ -48,13 +50,12 @@
 <div id='user-camera-photos' class='col-md-8'>
   <% @display_photos.map do |key, photo| %>
     <%= div_for key do %>
-      <div class='photo-created-at'>
-        <%= key.created_at.to_formatted_s(:long) %> - <%= link_to 'More Information', key %>
-      </div>
       <img src="<%= photo %>", class: 'img-wrapper' %>
     <% end %>
   <% end %>
 </div><!-- end display photos from s3 -->
+
+<button id='slideshow' class='btn btn-primary'>Start Slideshow</button>
 
 <div id="#followers-modal">
   <%= render :template => 'users/_followers' %>
