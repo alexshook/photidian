@@ -7,11 +7,13 @@
 </div>
 
 <script type="text/template" id="buttons-template">
-<div class='buttons'>
-  <button id='start' class='btn btn-primary'><%= fa_icon "camera-retro" %> Start Camera!</button>
-  <button id='take-photo' class='btn btn-primary'>Take Photo!</button>
-  <button id='upload-button' class='btn btn-primary'>Use this photo for <%= Date.today.to_formatted_s(:long) %>.</button>
-</div>
+  <div id="allow-access">
+    <p>Please allow photidian to access your camera.</p>
+  </div>
+  <div class='buttons'>
+    <button id='take-photo' class='btn btn-primary'><%= fa_icon "camera-retro" %> Take Photo!</button>
+    <button id='upload-button' class='btn btn-primary'>Use this photo for <%= Date.today.to_formatted_s(:long) %>.</button>
+  </div>
 </script>
 
 <div class="video-canvas col-md-6">

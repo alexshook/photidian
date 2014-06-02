@@ -46,3 +46,11 @@
   margin-bottom: 60px;
   margin-bottom: 6rem;
 }
+
+.buttons {
+  text-align: center;
+}
+
+.allow-access p {
+  font-size: 36px;
+}
