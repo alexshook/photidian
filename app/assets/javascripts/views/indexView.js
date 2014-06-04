@@ -12,20 +12,15 @@ var IndexView = Backbone.View.extend({
   },
 
   events: {
-    'click button#get-started': 'displayButtons',
-    'click button#start': 'getStream',
+    'click button#get-started': 'getStream',
     'click button#take-photo': 'takePhoto',
     'click button#upload-button': 'uploadPhoto'
   },
 
-  displayButtons: function() {
-  console.log('should show buttons');
+  getStream: function() {
     var template = _.template($('#buttons-template').html());
     this.$el.html(template);
-  },
 
-  getStream: function() {
-    console.log('hey im getStream');
     navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
     if (navigator.getUserMedia) {
