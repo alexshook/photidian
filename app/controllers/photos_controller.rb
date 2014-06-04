@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
 
   def index
     # @user = current_user
@@ -7,7 +7,6 @@ class PhotosController < ApplicationController
   end
 
   def new
-    @tags = Tag.all
     @photo = Photo.new
   end
 
@@ -18,7 +17,6 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @tags = Tag.all
     @photo = Photo.new
     # from the AWS S3 documentation
       # access environment variables for AWS S3

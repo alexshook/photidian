@@ -19,7 +19,7 @@ var IndexView = Backbone.View.extend({
   },
 
   displayButtons: function() {
-  console.log('should show buttons');
+    console.log('im display buttons');
     var template = _.template($('#buttons-template').html());
     this.$el.html(template);
     this.getStream();
@@ -27,7 +27,6 @@ var IndexView = Backbone.View.extend({
   },
 
   getStream: function() {
-    console.log('hey im getStream');
     navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
     if (navigator.getUserMedia) {
