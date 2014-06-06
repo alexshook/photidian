@@ -1,9 +1,13 @@
 <div id="index">
-  <div class="photodian-about">
+  <div class="photodian-about" align="center">
     <h2><%= fa_icon "camera-retro" %> n. a photo a day</h2>
     <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
     <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
-    <button id="get-started" class='btn btn-primary'>Take Your First Photo</button>
+    <% if current_user == nil %>
+      <%= render 'layouts/singup_signin_to_continue' %>
+    <% else %>
+    <button id="get-started" class='btn btn-primary'>Take a Photo</button>
+    <% end %>
   </div>
 </div>
 
