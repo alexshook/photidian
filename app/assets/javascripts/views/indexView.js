@@ -9,6 +9,7 @@ var IndexView = Backbone.View.extend({
     this.height = 375;
     this.videoStream = { video: true, audio: false };
     this.data;
+    this.photo;
     this.allowed = false;
   },
 
@@ -20,13 +21,14 @@ var IndexView = Backbone.View.extend({
 
   displayButtons: function() {
     console.log('im display buttons');
-    var template = _.template($('#buttons-template').html());
-    this.$el.html(template);
+    var buttonsTemplate = _.template($('#buttons-template').html());
+    this.$el.html(buttonsTemplate);
     this.getStream();
     $('#allow-access').fadeOut(4600);
   },
 
   getStream: function() {
+    console.log('im getStream')
     navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
     if (navigator.getUserMedia) {
@@ -36,6 +38,7 @@ var IndexView = Backbone.View.extend({
         this.videoElement.src = url ? url.createObjectURL(stream) : stream;
         this.videoElement.play();
         this.allowed = true;
+        console.log(this);
       }.bind(this),
 
         function(error) {
@@ -55,11 +58,11 @@ var IndexView = Backbone.View.extend({
     // encode the image
     var data = this.canvas.toDataURL('image/jpeg');
     // set the image source to be the value of the encoded data variable
-    photo.setAttribute('src', data);
+    var photo = this.photo.setAttribute('src', data);
   },
 
   uploadPhoto: function() {
-    if ((photo.src == 'http://0.0.0.0:3000/') || (photo.src == 'http://photidian.herokuapp.com/')) {
+    if ((this.photo.src == 'http://0.0.0.0:3000/') || (this.photo.src == 'http://photidian.herokuapp.com/')) {
       alert('You must take a photo first');
     } else {
       $.ajax({

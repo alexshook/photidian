@@ -1,14 +1,11 @@
-.navbar-main {
+.top-nav {
   text-align: center;
+  color: #000;
+  font-size: 48px;
 }
 
-.index-page {
-  margin-top: 5%;
-  margin-left: 2%;
-}
-
-.index-page h1 {
-  font-size: 52px;
+.photidian-about {
+  margin: 0 auto;
 }
 
 .cir-lg {
