@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
   validates :img_url, :user_id, presence: :true
 
   def self.all_db_photos
-    s3 = User.aws_request
+    s3 = Aws::request
     all_photos = self.order(:created_at).reverse_order
     photos_hash = {}
       all_photos.map do |list_photo|

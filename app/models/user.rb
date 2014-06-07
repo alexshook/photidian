@@ -41,14 +41,9 @@ class User < ActiveRecord::Base
     {:bucket => ENV['PHOTIDIAN_BUCKET_NAME'], :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']}
   end
 
-  # get AWS environment variables for S3 camera photo storage
-  def self.aws_request
-    return AWS::S3.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
-  end
-
   # get database objects, return attributes and binary data from s3 for display
   def get_s3_photos
-    s3 = User.aws_request
+    s3 = Aws::request
     photos = self.photos.order(:created_at).reverse_order
     photo_hash = {}
       photos.map do |photo|
@@ -59,7 +54,7 @@ class User < ActiveRecord::Base
   end
 
   def db_photo(db_string)
-    s3 = User.aws_request
+    s3 = Aws::request
     obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{db_string}"]
     read_obj = obj.read
     return read_obj

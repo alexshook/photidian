@@ -11,7 +11,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= button_to "View Photos", user_path(current_user.id), method: :get, class: 'btn btn-primary' %>
+        <%= button_to "View Photo", photo_path(current_user.photos.last), method: :get, class: 'btn btn-primary' %>
       </div>
     </div>
   </div>

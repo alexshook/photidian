@@ -20,7 +20,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new
     # from the AWS S3 documentation
       # access environment variables for AWS S3
-      s3 = User.aws_request
+      s3 = Aws::request
       # grab the bucket for photidian app
       bucket = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']]
       # update the bucket ACL (access control)
