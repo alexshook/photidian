@@ -9,8 +9,8 @@ var IndexView = Backbone.View.extend({
     this.height = 375;
     this.videoStream = { video: true, audio: false };
     this.data;
-    this.photo;
-    this.allowed = false;
+    this.photo = document.getElementById('photo');
+    var allowed;
   },
 
   events: {
@@ -24,7 +24,7 @@ var IndexView = Backbone.View.extend({
     var buttonsTemplate = _.template($('#buttons-template').html());
     this.$el.html(buttonsTemplate);
     this.getStream();
-    $('#allow-access').fadeOut(4600);
+    $('#allow-access').fadeTo(4600, 0);
   },
 
   getStream: function() {
@@ -37,13 +37,14 @@ var IndexView = Backbone.View.extend({
         var url = window.URL || window.webkitURL;
         this.videoElement.src = url ? url.createObjectURL(stream) : stream;
         this.videoElement.play();
-        this.allowed = true;
+        var allowed = true;
         console.log(this);
       }.bind(this),
 
         function(error) {
           alert('Sorry, the browser you are using doesn\'t support getUserMedia');
-          this.allowed = false;
+           var allowed = false;
+           console.log("getStream" + allowed);
       });
     }
   },
@@ -62,8 +63,11 @@ var IndexView = Backbone.View.extend({
   },
 
   uploadPhoto: function() {
-    if ((this.photo.src == 'http://0.0.0.0:3000/') || (this.photo.src == 'http://photidian.herokuapp.com/')) {
-      alert('You must take a photo first');
+    console.log('hey im uploadPhoto');
+    console.log(allowed);
+    if ((this.photo.src == 'http://0.0.0.0:3000/') || (this.photo.src == 'http://photidian.herokuapp.com/') || (allowed === false)) {
+      var errorHandlerTemplate = _.template($('#error-handler').html());
+      this.$el.html(errorHandlerTemplate);
     } else {
       $.ajax({
       url: '/photos',
