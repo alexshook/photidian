@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <div class="navbar-main">
     <div class="top-nav">pho <%= fa_icon "circle", class: 'cir-lg' %> ti <%= fa_icon "circle", class: 'cir-lg' %>  di <%= fa_icon "circle", class: 'cir-lg' %> an</div>
+          <li><%= link_to "Log Out", destroy_user_session_path, method: 'delete' %></li>
   </div><!-- navbar-main -->
 </div><!-- end container-fluid -->
