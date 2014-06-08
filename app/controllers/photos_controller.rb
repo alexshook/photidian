@@ -1,12 +1,12 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :new]
 
   def index
-    @check_date_last_photo = Photo.check_date_last_photo(current_user)
     # @display_all_photos = Photo.all_db_photos
   end
 
   def new
+    @check_date_last_photo = Photo.check_date_last_photo(current_user)
     @photo = Photo.new
   end
 
@@ -18,15 +18,22 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new
-    data = params[:file]
-    bucket = Aws::request.buckets[ENV['PHOTIDIAN_BUCKET_NAME']]
+
+    s3 = Aws::request
+    bucket = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']]
     # update the bucket ACL (access control)
     bucket.acl = :public_read
+    # get data from the js request
+    data = params[:file]
+    # name the file with username and current date and time
     file_name = "#{current_user.username}/" + Time.now.to_s.gsub(" ", "_") + ".jpg"
     # create the object for s3
     bucket.objects.create(file_name, data)
 
-    @photo.save(img_url: file_name, user_id: current_user.id)
+    # save photo and user params to the db
+    @photo.img_url = file_name
+    @photo.user_id = current_user.id
+    @photo.save
 
     # check response from s3
     return_data = {file: data}

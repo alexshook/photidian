@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
           :trackable,
           :validatable,
           :confirmable,
-          :lockable,
-          :timeoutable
+          :lockable
 
   validates :username, presence: true
 

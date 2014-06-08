@@ -4,6 +4,9 @@ class Photo < ActiveRecord::Base
 
   validates :img_url, :user_id, presence: :true
 
+  scope :newest_to_oldest, -> { order('created_at DESC') }
+  scope :oldest_to_newest, -> { order('created_at') }
+
   def self.all_db_photos
     s3 = Aws::request
     all_photos = self.order(:created_at).reverse_order
