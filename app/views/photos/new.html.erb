@@ -1,0 +1,47 @@
+<div id="index">
+  <div class="photodian-about" align="center">
+    <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
+    <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
+    <% if current_user %>
+      <%# if @check_date_last_photo == false %>
+        <button id="get-started" class='btn btn-primary'>Take a Photo</button>
+      <%# else %>
+        <div class="taken-today">You have already taken a photo today.</div>
+      <%# end %>
+    <% else %>
+      <%= render 'layouts/signup_signin_to_continue' %>
+    <% end %>
+  </div>
+</div>
+
+  <script type="text/template" id="buttons-template">
+    <div id="allow-access" class="error-handler-style">
+      <p>Please allow photidian to access your camera.</p>
+    </div>
+    <div class='buttons'>
+      <button id='take-photo' class='btn btn-primary'><%= fa_icon "camera-retro" %> Take Photo!</button>
+      <button id='upload-button' class='btn btn-primary'>Use this photo for <%= Date.today.to_formatted_s(:long) %>.</button>
+    </div>
+  </script>
+
+<script type="text/template" id="error-handler">
+  <div id="photo-error" class="error-handler-style">
+    <p>Please take a photo to continue.</p>
+    </div>
+</script>
+
+<div class="video-canvas col-md-6">
+  <video id='vid' width ='500' height='375'></video>
+</div>
+
+<div class="snapshot col-md-6">
+  <canvas id='can' width ='500' height='375'></canvas>
+  <img src="" id="photo">
+</div>
+
+<div class="tags-list">
+</div>
+
+<div id="#s3-save">
+  <%= render :template => 'photos/_modal' %>
+</div>

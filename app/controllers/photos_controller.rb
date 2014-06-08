@@ -18,24 +18,15 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new
-    # from the AWS S3 documentation
-      # access environment variables for AWS S3
-      s3 = Aws::request
-      # grab the bucket for photidian app
-      bucket = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']]
-      # update the bucket ACL (access control)
-      bucket.acl = :public_read
-      # get data from the js request
-      data = params[:file]
-      # name the file with username and current date and time
-      file_name = "#{current_user.username}/" + Time.now.to_s.gsub(" ", "_") + ".jpg"
-      # create the object for s3
-      bucket.objects.create(file_name, data)
+    data = params[:file]
+    bucket = Aws::request.buckets[ENV['PHOTIDIAN_BUCKET_NAME']]
+    # update the bucket ACL (access control)
+    bucket.acl = :public_read
+    file_name = "#{current_user.username}/" + Time.now.to_s.gsub(" ", "_") + ".jpg"
+    # create the object for s3
+    bucket.objects.create(file_name, data)
 
-    # save photo and user params to the db
-    @photo.img_url = file_name
-    @photo.user_id = current_user.id
-    @photo.save
+    @photo.save(img_url: file_name, user_id: current_user.id)
 
     # check response from s3
     return_data = {file: data}
