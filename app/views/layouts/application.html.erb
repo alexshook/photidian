@@ -9,19 +9,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-  <!-- call the navbar -->
   <%= render 'layouts/navbar' %>
-  <!-- flash notice and alert for devise -->
-  <% if notice %>
-      <p class="notice alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-  <!-- regular bootstrap container -->
-  <div class='container'>
+    <div class='container'>
+      <%= render 'layouts/flash_notice' %>
     <%= yield %>
   </div>
-
 </body>
 </html>
