@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    # @user = current_user
+    @check_date_last_photo = Photo.check_date_last_photo(current_user)
     # @display_all_photos = Photo.all_db_photos
   end
 
