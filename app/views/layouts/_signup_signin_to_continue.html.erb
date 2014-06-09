@@ -1,1 +1,9 @@
-<div class="continue">Please <%= link_to "sign up", new_user_registration_path %> or <%= link_to "log in", new_user_session_path %> to continue.</div>
+<div class="continue">Please <%= button_tag "sign up", data: { toggle: 'modal', target: '#sign-up-modal' }, method: :get, id: 'sign-up-button', class: 'btn btn-primary' %> or <%= button_tag "sign in", data: { toggle: 'modal', target: '#sign-in-modal' }, method: :get, id: 'sign-in-button', class: 'btn btn-primary' %> to continue.</div>
+
+<div id="sign-up">
+  <%= render :template => 'devise/registrations/_new' %>
+</div>
+
+<div id="sign-in">
+  <%= render :template => 'devise/sessions/_new' %>
+</div>
