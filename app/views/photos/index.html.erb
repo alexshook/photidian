@@ -1,2 +1,7 @@
-<div>photos index page</div>
-<div>sort by recent?</div>
+<h2>Recent Photos</h2>
+
+<% @display_20_recent.each do |key, photo| %>
+  <%= div_for key do %>
+    <img src="<%= photo %>">
+  <% end %>
+<% end %>

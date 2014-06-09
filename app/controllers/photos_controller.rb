@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!, except: [:index, :new]
 
   def index
-    # @display_all_photos = Photo.all_db_photos
+    @display_20_recent = Photo.all_db_photos
   end
 
   def new

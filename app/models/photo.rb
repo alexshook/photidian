@@ -9,7 +9,7 @@ class Photo < ActiveRecord::Base
 
   def self.all_db_photos
     s3 = Aws::request
-    all_photos = self.order(:created_at).reverse_order
+    all_photos = self.order(:created_at).reverse_order.limit(20)
     photos_hash = {}
       all_photos.map do |list_photo|
         obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{list_photo.img_url}"]

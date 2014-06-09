@@ -65,10 +65,18 @@
   font-size: 18px;
 }
 
-.modal-body-authentication {
-
-}
-
 .left-align {
   text-align: left;
+}
+
+.white {
+  color: #95a5a6;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.white:hover {
+  color: #fff;
+  background-color: #95a5a6;
+  border-color: #95a5a6;
 }
