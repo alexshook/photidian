@@ -1,17 +1,10 @@
+<h2>Recent Photos from Users You Follow</h2>
+
+<%= render 'feed' %>
+
+<br />
+
 <h2>Browse Users</h2>
-
-<%= form_tag '/search', method: :get do %>
-  <%= label_tag 'q', "Search" %>
-  <%= text_field_tag 'q' %>
-  <%= submit_tag %>
-<% end %>
-
-<% if @search_results %>
-  <% @search_results.each do |result| %>
-    <%= result.username %>
-  <% end %>
-<% end %>
-
 
 <% @users.each do |u| %>
   <div class='all-users'>
@@ -19,4 +12,4 @@
   </div>
 <% end %>
 
-<%= render 'feed' %>
+

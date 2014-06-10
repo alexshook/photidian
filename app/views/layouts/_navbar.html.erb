@@ -5,8 +5,8 @@
       <h4><%= fa_icon "camera-retro" %> n. a photo a day</h4>
     </div>
     <% if current_user %>
-      <ul>
-        <li><%= link_to "Feed", users_path %></li>
+      <ul class="nav">
+        <li><%= link_to "Photo Feed", users_path %></li>
         <li><%= link_to "My Photos", user_path(current_user.id) %></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: 'delete' %></li>
       </ul>
