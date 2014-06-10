@@ -10,10 +10,14 @@
 #followers-button-wrapper {
   width: 50%;
   float: right;
-  padding-top: 20px;
+  padding-top: 15px;
   padding-top: 2rem;
   padding-left: 15px;
   padding-left: 1.5rem;
+}
+
+#view-followers-button {
+  padding-top: 5px;
 }
 
 .user-avatar-wrapper {
@@ -60,4 +64,8 @@
 
 .space-bottom {
   padding-bottom: 60px;
+}
+
+.slideshow-button {
+  padding: 5px;
 }

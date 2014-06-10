@@ -29,7 +29,9 @@
       </div>
     <% end %>
 
-    <%= button_tag 'Followers', data: { toggle: 'modal', target: '#followers-modal' }, method: :get, id: 'followers-button', class: 'btn btn-default' %>
+    <div id='view-followers-button'>
+      <%= button_tag 'Followers', data: { toggle: 'modal', target: '#followers-modal' }, method: :get, id: 'followers-button', class: 'btn btn-default' %>
+    </div>
   </div>
 
   <div class='user-avatar'>
@@ -42,21 +44,27 @@
 
 </div> <!-- end user profile -->
 
-<!-- begin display photos from s3 -->
-<div id='user-camera-photos' class='col-md-8'>
-  <% @display_photos.map do |key, photo| %>
-    <%= div_for key do %>
-      <img src="<%= photo %>", class: 'img-wrapper' %>
+<div class='col-md-6'>
+
+  <div class="slideshow-button">
+    <button id="start" class='btn btn-primary'>Start Slideshow</button>
+  </div>
+
+  <!-- begin display photos from s3 -->
+  <div id='user-camera-photos'>
+    <% @display_photos.map do |key, photo| %>
+      <%= div_for key do %>
+        <img src="<%= photo %>", class: 'img-wrapper' %>
+      <% end %>
     <% end %>
-  <% end %>
-</div><!-- end display photos from s3 -->
+  </div><!-- end display photos from s3 -->
 
-<button id="start" class='btn btn-primary'>Start Slideshow</button>
 
-<div id="#followers-modal">
-  <%= render :template => 'users/_followers' %>
-</div>
+  <div id="#followers-modal">
+    <%= render :template => 'users/_followers' %>
+  </div>
 
-<div id="#following-modal">
-  <%= render :template => 'users/_following' %>
+  <div id="#following-modal">
+    <%= render :template => 'users/_following' %>
+  </div>
 </div>

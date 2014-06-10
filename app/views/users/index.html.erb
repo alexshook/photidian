@@ -1,15 +1,21 @@
+<%= javascript_include_tag 'users' %>
+
 <h2>Recent Photos from Users You Follow</h2>
 
 <%= render 'feed' %>
 
 <br />
 
-<h2>Browse Users</h2>
+<div id="browse-users"><h2>Browse All Users <%= fa_icon "chevron-right" %></h2></div>
 
-<% @users.each do |u| %>
-  <div class='all-users'>
-    <%= image_tag u.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to u.username, u %>
-  </div>
-<% end %>
+<div id="users">
+  <% @users.each do |u| %>
+    <div class='all-users'>
+      <%= image_tag u.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to u.username, u %>
+    </div>
+  <% end %>
+</div>
+
+<div class="space-bottom"></div>
 
 

@@ -1,5 +1,8 @@
 $().ready(function() {
+  $('#users').hide();
 
-  $('#myModal').modal('hide');
+  $('#browse-users').click(function() {
+    $('#users').show();
+  });
 
 });
