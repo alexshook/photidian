@@ -1,0 +1,8 @@
+<% @feed.each do |key, photo| %>
+  <div class="feed">
+    <%= link_to key.user.username, key.user %>
+  </div>
+  <div class="feed-photo">
+    <img src="<%= photo %>">
+  </div>
+<% end %>

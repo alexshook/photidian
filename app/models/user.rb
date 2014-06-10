@@ -59,14 +59,6 @@ class User < ActiveRecord::Base
     return read_obj
   end
 
-  def check_100_days
-    if self.photos.length < 100
-      return false
-    else
-      return true
-    end
-  end
-
   def following?(user)
     self.relationships.find_by(following_id: user.id)
   end
@@ -77,6 +69,29 @@ class User < ActiveRecord::Base
 
   def unfollow(user)
     self.relationships.find_by(following_id: user.id).destroy!
+  end
+
+  def get_following_photos
+    photos_array = []
+    self.following.each do |user|
+      photos_array << user.photos.last
+    end
+
+    return photos_array.reject { |photo| photo == nil }
+  end
+
+  def get_following_feed(photos_array)
+    s3 = Aws::request
+    feed_hash = {}
+    photos_array.map do |photo|
+      obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{photo.img_url}"]
+      feed_hash[photo] = obj.read
+    end
+    return feed_hash
+  end
+
+  def self.search_for(q)
+    where('first_name LIKE :q OR username LIKE :q OR location LIKE :q', q: "%#{q}%")
   end
 
 end

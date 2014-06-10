@@ -1,7 +1,22 @@
-<h1>Browse Users</h1>
+<h2>Browse Users</h2>
+
+<%= form_tag '/search', method: :get do %>
+  <%= label_tag 'q', "Search" %>
+  <%= text_field_tag 'q' %>
+  <%= submit_tag %>
+<% end %>
+
+<% if @search_results %>
+  <% @search_results.each do |result| %>
+    <%= result.username %>
+  <% end %>
+<% end %>
+
 
 <% @users.each do |u| %>
   <div class='all-users'>
     <%= image_tag u.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to u.username, u %>
   </div>
 <% end %>
+
+<%= render 'feed' %>
