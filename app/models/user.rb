@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   # get database objects, return attributes and binary data from s3 for display
   def get_s3_photos
     s3 = Aws::request
-    photos = self.photos.order(:created_at).reverse_order
+    photos = self.photos.order(:created_at)
     photo_hash = {}
       photos.map do |photo|
         obj = s3.buckets[ENV['PHOTIDIAN_BUCKET_NAME']].objects["#{photo.img_url}"]
