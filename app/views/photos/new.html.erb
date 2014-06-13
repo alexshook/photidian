@@ -3,11 +3,11 @@
     <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
     <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
     <% if current_user %>
-      <% if @check_date_last_photo == false %>
+      <%# if @check_date_last_photo == false %>
         <button id="get-started" class='btn btn-primary'>Take a Photo</button>
-      <% else %>
+      <%# else %>
         <div class="taken-today">You have already taken a photo today.</div>
-      <% end %>
+      <%# end %>
     <% else %>
       <%= render 'layouts/signup_signin_to_continue' %>
     <% end %>
