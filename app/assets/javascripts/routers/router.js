@@ -1,4 +1,4 @@
-PhotoRouter = Backbone.Router.extend({
+var PhotoRouter = Backbone.Router.extend({
   initialize: function() {
     console.log('router');
     this.indexView = new IndexView({ el: $("#index") });

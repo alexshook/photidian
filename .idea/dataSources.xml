@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="854916309">
+    <data-source source="LOCAL" name="Rails photodian: development" uuid="788968aa-36d2-4690-b33d-2ab426f5726f">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:photodian_development</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails photodian: test" uuid="649f912f-cc39-4407-802d-9c64d1554c4e">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:photodian_test</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails photodian: production" uuid="13e38fbc-afd6-4e64-a713-af09ca03b1fc">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:photodian_production</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
