@@ -15,7 +15,8 @@ var IndexView = Backbone.View.extend({
   events: {
     'click button#get-started': 'displayButtons',
     'click button#take-photo': 'takePhoto',
-    'click button#upload-button': 'uploadPhoto'
+    'click button#upload-button': 'uploadPhoto',
+    'click a#demo': 'showPopover'
   },
 
   displayButtons: function() {
@@ -75,5 +76,9 @@ var IndexView = Backbone.View.extend({
         $('#s3-save').modal('show');
       });
     }
+  },
+
+  showPopover: function() {
+    $('#demo').popover('show');
   }
 });
