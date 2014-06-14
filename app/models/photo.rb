@@ -18,16 +18,16 @@ class Photo < ActiveRecord::Base
     return photos_hash
   end
 
-  def self.check_date_last_photo(user)
+  def self.check_date_last_photo(current_user)
     todays_date = Time.now.to_s
-    if user != nil
-      if user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, ''))
+    while current_user != nil
+      break if current_user.photos.class == nil
         return true
-      else
+      break if current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == true
         return false
-      end
+      break if current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == false
+        return true
     end
-
   end
 
 end
