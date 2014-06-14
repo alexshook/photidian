@@ -10,7 +10,6 @@ var IndexView = Backbone.View.extend({
     this.videoStream = { video: true, audio: false };
     this.data;
     this.photo = document.getElementById('photo');
-    $('.about-photidian').hide();
   },
 
   events: {

@@ -2,13 +2,13 @@
   <div class="photodian-about" align="center">
     <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
     <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
-    <div class="about-photidian">The average laptop/destop owner spends five hours/day in front of a computer screen. Photidian is a visual diary of those hours- use the app to take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</div>
+    <div class='about-photidian'>The average laptop/destop owner spends five hours/day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</div>
     <% if current_user %>
-      <%# if @check_date_last_photo == false %>
+      <% if @check_date_last_photo == false %>
         <button id="get-started" class='btn btn-primary'>Take a Photo</button>
-      <%# else %>
+      <% else %>
         <div class="taken-today">You have already taken a photo today.</div>
-      <%# end %>
+      <% end %>
     <% else %>
       <%= render 'layouts/signup_signin_to_continue' %>
     <% end %>
