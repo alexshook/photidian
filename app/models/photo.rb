@@ -22,11 +22,11 @@ class Photo < ActiveRecord::Base
     todays_date = Time.now.to_s
     while current_user != nil
       break if current_user.photos.class == nil
-        return true
-      break if current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == true
         return false
-      break if current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == false
+      break if current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == true
         return true
+      break if current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == false
+        return false
     end
   end
 

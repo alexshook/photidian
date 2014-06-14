@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
   end
 
   def new
-    @check_date_last_photo = Photo.check_date_last_photo(current_user)
+    @date_last_photo_today = Photo.check_date_last_photo(current_user)
     @photo = Photo.new
   end
 
