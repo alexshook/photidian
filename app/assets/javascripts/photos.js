@@ -1,9 +1,8 @@
 $().ready(function() {
   $("#user-camera-photos > div").hide();
-  $("#user-camera-photos > div:first").show();
 
   $('#start').click(function() {
-    $("#user-camera-photos > div:first").fadeOut(250);
+    $("#user-camera-photos > div:first").show();
     setInterval(function() {
       $('#user-camera-photos > div:first')
         .fadeOut(1000)
