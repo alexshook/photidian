@@ -79,6 +79,6 @@ var IndexView = Backbone.View.extend({
   },
 
   showPopover: function() {
-    $('#demo').popover('show');
+    $('#demo').popover('toggle');
   }
 });
