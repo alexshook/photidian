@@ -62,6 +62,9 @@
 
 .notice-alert {
   font-size: 16px;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 15px;
   max-width: 500px;
 }
 

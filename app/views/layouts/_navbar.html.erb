@@ -4,18 +4,20 @@
       <div class="top-nav-brand">pho <%= fa_icon "circle", class: 'cir-lg' %> ti <%= fa_icon "circle", class: 'cir-lg' %>  di <%= fa_icon "circle", class: 'cir-lg' %> an</div>
       <h4><%= fa_icon "camera-retro" %> n. a photo a day</h4>
     </div>
+    <div class="secondary-nav">
     <% if current_user %>
       <ul class="nav">
         <li><%= link_to "Take a Photo", root_path %></li>
-        <li><%#= button_tag "Search", id: 'search-users' %></li>
+        <li><%= link_to "Search", root_path, id: 'search-users' %></li>
         <li><%= link_to "My Photos", user_path(current_user.id) %></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: 'delete' %></li>
       </ul>
     <% else %>
       <ul class="nav">
         <li><%= link_to "Home", root_path %></li>
-        <li><a id="about" href="about">About</button></li>
+        <li><a id="about" href="#">About</a></li>
         <li><a href="https://github.com/alexshook/photidian" target="_blank">GitHub</a></li>
     <% end %>
-  </div><!-- navbar-main -->
+    </div><!-- end secondary-nav -->
+  </div><!-- end navbar-main -->
 </div><!-- end container-fluid -->
