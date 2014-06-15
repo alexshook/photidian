@@ -2,6 +2,7 @@ $().ready(function() {
   $("#user-camera-photos > div").hide();
 
   $('#start').click(function() {
+    $("#user-camera-photos").removeClass('whiteout');
     $("#user-camera-photos > div:first").show();
     setInterval(function() {
       $('#user-camera-photos > div:first')

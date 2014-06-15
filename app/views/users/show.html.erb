@@ -54,7 +54,7 @@
   </div>
 
   <!-- begin display photos from s3 -->
-  <div id='user-camera-photos'>
+  <div id='user-camera-photos' class='whiteout'>
     <% @display_photos.map do |database_key, photo| %>
       <%= div_for database_key do %>
         <%= database_key.created_at.to_formatted_s(:long_ordinal) %>
