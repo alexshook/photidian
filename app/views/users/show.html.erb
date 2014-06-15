@@ -55,9 +55,9 @@
 
   <!-- begin display photos from s3 -->
   <div id='user-camera-photos'>
-    <% @display_photos.map do |key, photo| %>
-      <%= div_for key do %>
-        <%= key.created_at.to_formatted_s(:long_ordinal) %>
+    <% @display_photos.map do |database_key, photo| %>
+      <%= div_for database_key do %>
+        <%= database_key.created_at.to_formatted_s(:long_ordinal) %>
         <img src="<%= photo %>", class: 'img-wrapper' %>
       <% end %>
     <% end %>

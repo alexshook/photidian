@@ -41,12 +41,16 @@
 
 #user-camera-photos {
   position: relative;
+  background-color: #FFF;
+  width: 500px;
+  height: 375px;
 }
 
 #user-camera-photos > div {
   position: absolute;
   top: 0;
   left: 0;
+  // border: 2px solid #707070;
 }
 
 .user-photos-index {
