@@ -1,5 +1,6 @@
+$("#user-camera-photos > div").hide();
+
 $().ready(function() {
-  $("#user-camera-photos > div").hide();
 
   $('#start').click(function() {
     $("#user-camera-photos").removeClass('whiteout');
