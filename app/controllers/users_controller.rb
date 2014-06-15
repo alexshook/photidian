@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     following_photos = current_user.get_following_photos
     @feed = current_user.get_following_feed(following_photos)
     q = params[:q]
-    @search_results = User.search_for q
+    @search_results = User.search_for(q)
   end
 
   def show

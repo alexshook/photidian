@@ -44,9 +44,14 @@
 }
 
 #user-camera-photos > div {
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.user-photos-index {
+  position: relative;
+  top: 500px;
 }
 
 .feed {
