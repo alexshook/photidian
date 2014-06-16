@@ -7,7 +7,7 @@ describe User do
   end
 
   describe "#db_photos" do
-    it "should return object information from the database and binary data from S3" do
+    it "should return object information from the database and data from S3" do
       photos = user.db_photos
       expect photo_hash.to_include :username
     end

@@ -10,7 +10,7 @@ describe "view profile", :type => :feature do
     fill_in 'Email', with: 'als304@gmail.com'
     fill_in 'Password', with: 'qwertyqwerty'
     click_button 'Sign in'
-    expect(page).to have_content 'My Profile'
+    expect(page).to have_content 'My Photos'
   end
 
   it "visits my profile page" do
@@ -26,12 +26,6 @@ describe "view profile", :type => :feature do
 
   it "should take a photo" do
     # visit 'photos/new'
-  end
-
-  it "should browse photos" do
-    visit '/'
-    click_on 'browse photos'
-    expect(page).to have_content 'Browse Photos'
   end
 
 end

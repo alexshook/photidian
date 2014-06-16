@@ -10,11 +10,11 @@ describe "the signin process", :type => :feature do
     fill_in 'Email', with: 'als304@gmail.com'
     fill_in 'Password', with: 'qwertyqwerty'
     click_button 'Sign in'
-    expect(page).to have_content 'My Profile'
+    expect(page).to have_content 'My Photos'
   end
 
   it "logs me out" do
-    visit 'users/sign_out'
+    click_on 'Sign Out'
     expect(page).to have_content 'Signed out successfully.'
   end
 
