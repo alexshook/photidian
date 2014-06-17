@@ -1,7 +1,7 @@
 Photodian::Application.routes.draw do
   root to: 'photos#new'
   get 'pages/about'
-  get 'search', to: 'users#index'
+  get 'search', to: 'users#search'
 
   devise_for :users
   resources :users, only: [:index, :show] do

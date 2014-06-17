@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     @oldest_to_newest = @user.photos.oldest_to_newest
   end
 
+  def search
+    q = params[:q]
+    @users = User.search_for(q)
+  end
+
 private
   def user_params
     params.require(:user).permit(:avatar, :username, :first_name, :last_name,:location, :bio, :avatar, :password, :password_confirmation, :current_password, :follower_id, :following_id)
