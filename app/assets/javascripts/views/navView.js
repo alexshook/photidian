@@ -14,7 +14,8 @@ var NavView = Backbone.View.extend ({
     e.preventDefault();
     console.log('hey im displaySearchForm');
     var searchFormTemplate = _.template($("#search-template").html());
-    this.$el.html(searchFormTemplate);
+    $('.secondary-nav').append($('<div id="search-form-wrapper"></div>'));
+    $('#search-form-wrapper').html(searchFormTemplate).slideDown('slow');
   },
 
   displayAbout: function(e) {

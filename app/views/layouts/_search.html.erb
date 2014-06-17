@@ -1,7 +1,7 @@
 <script type="text" id="search-template">
-  <%= form_tag '/search', method: 'get' do %>
-    <%= text_field_tag(:q) %>
-    <%= submit_tag "Search" %>
+  <%= form_tag '/search', method: 'get', id: 'search-form' do %>
+    <%= text_field_tag :q, params[:q], class: 'form-control' %>
+    <%= submit_tag "Search", class: 'btn btn-default' %>
   <% end %>
 </script>
 

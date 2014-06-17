@@ -97,3 +97,17 @@
   display: inline-block;
 
 }
+
+#search-form-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 400px;
+}
+
+#search-form {
+  margin: 0 auto;
+  padding: 15px;
+  text-align: center;
+}
+
+
