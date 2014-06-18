@@ -21,6 +21,10 @@ var NavView = Backbone.View.extend ({
   displayAbout: function(e) {
     e.preventDefault();
     console.log('hey im displayAbout');
+    var aboutTemplate = _.template($('<div class="about">The average laptop/destop owner spends five hours/day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</div>'));
+    $('.secondary-nav').append(aboutTemplate);
+
+
   }
 
 });
