@@ -1,7 +1,7 @@
 $().ready(function() {
   $("#user-camera-photos > div").hide();
   $('#loading-photos').fadeTo(2600, 0);
-  $('#start').fadeIn(300);
+  $('#start').fadeIn('slow');
 
   $('#start').click(function() {
     $("#user-camera-photos").removeClass('whiteout');
