@@ -2,6 +2,7 @@ Photodian::Application.routes.draw do
   root to: 'photos#new'
   get 'pages/about'
   get 'search', to: 'users#search'
+  post 'tags/add', to: 'photos#add_tag'
 
   devise_for :users
   resources :users, only: [:index, :show] do
@@ -14,5 +15,5 @@ Photodian::Application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :tags, only: [:show]
+  resources :tags
 end

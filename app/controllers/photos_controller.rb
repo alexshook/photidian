@@ -15,6 +15,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find params[:id]
     @user = @photo.user
     @display_photo = @user.db_photo(@photo.img_url)
+    @tags = Tag.all
   end
 
   def create
@@ -51,6 +52,14 @@ class PhotosController < ApplicationController
     else
       flash[:notice] = "Sorry, something went wrong."
     end
+  end
+
+  def add_tag
+    @photo = Photo.find params[:photo]
+    @tag = Tag.find params[:tags]
+    @photo.add_tag(@tag)
+
+    redirect_to @photo
   end
 
   private

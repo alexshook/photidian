@@ -1,13 +1,11 @@
 $().ready(function() {
-  $("#user-camera-photos > div").hide();
   $('#loading-photos').fadeTo(2600, 0);
-  $('#start').fadeIn('slow');
 
   $('#start').click(function() {
     $("#user-camera-photos").removeClass('whiteout');
     $("#user-camera-photos > img").removeClass('whiteout');
     $(".photo > img").removeClass('photo');
-    // $("#user-camera-photos > div:first").show();
+    // $("#user-camera-photos > div:first").fadeIn(1000);
     setInterval(function() {
       $('#user-camera-photos > div:first')
         .fadeOut(1000)

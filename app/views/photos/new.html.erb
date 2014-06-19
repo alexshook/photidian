@@ -1,8 +1,15 @@
+<div id="nav-wrapper">
+    <script type="text" id="about-template" class="hide">
+      <div class="photodian-about centered">
+        <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
+        <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
+      </div>
+      <div class='about-photidian-desc'>The average laptop/destop owner spends five hours/day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</div>
+    </script>
+</div>
+
 <div id="index">
-  <div class="photodian-about" align="center">
-    <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
-    <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
-    <div class='about'>The average laptop/destop owner spends five hours/day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</div>
+  <div class="centered">
     <% if current_user %>
       <% if @date_last_photo_today == false %>
         <button id="get-started" class='btn btn-primary'>Take a Photo</button>
@@ -15,15 +22,15 @@
   </div>
 </div>
 
-  <script type="text/template" id="buttons-template">
-    <div id="allow-access" class="error-handler-style">
-      <p>Please allow photidian to access your camera.</p>
-    </div>
-    <div class='buttons'>
-      <button id='take-photo' class='btn btn-primary'><%= fa_icon "camera-retro" %> Take Photo!</button>
-      <button id='upload-button' class='btn btn-primary'>Use this photo for <%= Date.today.to_formatted_s(:long) %>.</button>
-    </div>
-  </script>
+<script type="text/template" id="buttons-template">
+  <div id="allow-access" class="error-handler-style">
+    <p>Please allow photidian to access your camera.</p>
+  </div>
+  <div class='buttons centered'>
+    <button id='take-photo' class='btn btn-primary'><%= fa_icon "camera-retro" %> Take Photo!</button>
+    <button id='upload-button' class='btn btn-primary'>Use this photo for <%= Date.today.to_formatted_s(:long) %>.</button>
+  </div>
+</script>
 
 <script type="text/template" id="error-handler">
   <div id="photo-error" class="error-handler-style">

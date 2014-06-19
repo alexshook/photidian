@@ -1,13 +1,16 @@
-<h1><%= @photo.user.username %> on <%= @photo.created_at %></h1>
+<h2><%= link_to @photo.user.username, @photo.user %> on <%= @photo.created_at.to_formatted_s(:long) %></h2>
 
 <img src="<%= @display_photo %>">
 
-<%= simple_form_for @photo do |f|%>
-  <%= f.association :tags, collection: Tag.all(order: 'name'), prompt: "Tag this Photo", class: 'form-control' %>
-  <%= f.input :photo_id, :as => :hidden, :input_html => { :value => @photo_id } %>
-  <%= f.submit "Add Tag", class: 'btn btn-primary' %>
+<%= form_tag "/tags/add" do %>
+  <%= select_tag "tags", options_from_collection_for_select(@tags, "id", "name") %>
+  <%= hidden_field_tag "photo", @photo.id %>
+  <%= submit_tag "Tag this Photo" %>
 <% end %>
 
-<% @photo.tags.each do |tag| %>
-  <%= tag.name %>
+<% if @photo.tags.length != 0 %>
+Tagged:
+  <% @photo.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
 <% end %>

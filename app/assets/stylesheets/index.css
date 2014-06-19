@@ -1,7 +1,22 @@
-.top-nav {
+/* Global Styles */
+
+.centered {
   text-align: center;
+}
+
+/* Nav Styles */
+.top-nav {
   color: #000;
   font-size: 48px;
+}
+
+.nav {
+  list-style-type: none;
+  text-align: center;
+}
+
+.nav li {
+  display: inline-block;
 }
 
 .cir-lg {
@@ -24,21 +39,6 @@
   font-size: 12px;
 }
 
-.about {
-  margin: 0 auto;
-  width: 70%;
-}
-
-.about h2 {
-  font-size: 26px;
-}
-
-.about p {
-  font-size: 16px;
-  padding: 5px;
-  padding: .5rem;
-}
-
 .dropdown:hover .dropdown-menu {
     display: block;
 }
@@ -48,8 +48,23 @@
   margin-bottom: 6rem;
 }
 
-.buttons {
-  text-align: center;
+/* Nav Dropdown Styles */
+
+.about-photidian-desc {
+  width: 50%;
+  margin: 0 auto;
+  padding: 15px 0;
+  font-size: 16px;
+}
+
+#search-form-wrapper {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+#search-form {
+  margin: 0 auto;
+  padding: 15px;
 }
 
 .continue {
@@ -57,7 +72,14 @@
 }
 
 .continue-demo {
+  padding: 15px;
+}
+
+.continue-demo p {
   font-size: 18px;
+  right: 0;
+  left: 0;
+  margin: auto;
 }
 
 .notice-alert {
@@ -88,27 +110,6 @@
   border-color: #95a5a6;
 }
 
-.nav {
-  list-style-type: none;
-  text-align: center;
-}
-
-.nav li {
-  display: inline-block;
-}
-
-#search-form-wrapper {
-  margin: 0 auto;
-  text-align: center;
-  max-width: 400px;
-}
-
-#search-form {
-  margin: 0 auto;
-  padding: 15px;
-  text-align: center;
-}
-
-.hidden {
+.hide {
   display: none;
 }

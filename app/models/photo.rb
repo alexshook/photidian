@@ -30,5 +30,9 @@ class Photo < ActiveRecord::Base
     end
   end
 
+  def add_tag(tag)
+    self.tags << tag
+  end
+
 end
 

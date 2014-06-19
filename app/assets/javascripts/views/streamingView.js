@@ -1,4 +1,4 @@
-var IndexView = Backbone.View.extend({
+var StreamingView = Backbone.View.extend({
   el: 'div#index',
 
   initialize: function() {

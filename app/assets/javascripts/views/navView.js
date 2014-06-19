@@ -14,17 +14,17 @@ var NavView = Backbone.View.extend ({
     e.preventDefault();
     console.log('hey im displaySearchForm');
     var searchFormTemplate = _.template($("#search-template").html());
-    $('.secondary-nav').append($('<div id="search-form-wrapper"></div>'));
+    $('.secondary-nav').append($('<div id="search-form-wrapper" class="centered"></div>'));
     $('#search-form-wrapper').html(searchFormTemplate).slideDown('slow');
   },
 
   displayAbout: function(e) {
     e.preventDefault();
     console.log('hey im displayAbout');
-    var aboutTemplate = _.template($('<div class="about">The average laptop/destop owner spends five hours/day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</div>'));
-    $('.secondary-nav').append(aboutTemplate);
-
-
+    var aboutTemplate = _.template($("#about-template").html());
+    $('.secondary-nav').append('<div id="about-template-wrapper"></div>');
+    $('#about-template-wrapper').html(aboutTemplate);
+    $("#about-template").removeClass('hide');
   }
 
 });
