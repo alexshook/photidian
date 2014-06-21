@@ -1,4 +1,4 @@
-var Photo = Backbone.Model.extend({
+var PhotoModel = Backbone.Model.extend({
   urlRoot: '/photos',
   defaults: {
     img_url: 'http://placekitten.com/300/300'

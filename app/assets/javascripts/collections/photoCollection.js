@@ -1,6 +1,3 @@
 var PhotoCollection = Backbone.Collection.extend({
-  url: '/photos',
-  model: Photo
+  url: '/photos'
 });
-
-var collection = new PhotoCollection();
