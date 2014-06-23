@@ -4,6 +4,24 @@
   text-align: center;
 }
 
+.hide {
+  display: none;
+}
+
+.whitespace-top-bottom {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.whitespace-bottom {
+  margin-bottom: 60px;
+  margin-bottom: 6rem;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 /* Nav Styles */
 .top-nav {
   color: #000;
@@ -37,15 +55,6 @@
 .cir-xxs {
   color: #000;
   font-size: 12px;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.whitespace-bottom {
-  margin-bottom: 60px;
-  margin-bottom: 6rem;
 }
 
 /* Nav Dropdown Styles */
@@ -110,6 +119,3 @@
   border-color: #95a5a6;
 }
 
-.hide {
-  display: none;
-}
