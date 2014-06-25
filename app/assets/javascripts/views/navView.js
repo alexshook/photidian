@@ -7,7 +7,7 @@ var NavView = Backbone.View.extend ({
 
   events: {
     'click a#search-users': 'displaySearchForm',
-    'click a#about': 'displayAbout'
+    'click a#about': 'displayAbout',
   },
 
   displaySearchForm: function(e) {

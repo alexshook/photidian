@@ -1,4 +1,4 @@
-<div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myMod alLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,7 +9,7 @@
           <%= f.error_notification %>
 
           <div class="form-inputs form-group">
-            <%= f.input :email, required: true, class: "form-control" %>
+            <%= f.input :email, required: true, autofocus: true, class: "form-control" %>
             <%= f.input :password, required: true, class: 'form-control' %>
             <%= f.input :password_confirmation, required: true, class: 'form-control' %>
             <%= f.input :username, required: true, class: 'form-control' %> Your username will be public.
