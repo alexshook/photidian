@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def is_private
     @user = User.find params[:id]
-    privacy_setting = @user.private == true ? true : false
+    privacy_setting = @user.private == true && @user != current_user ? true : false
     if privacy_setting == true
       flash[:notice] = "Sorry, this user's profile is private. Please choose another user!"
       redirect_to users_path

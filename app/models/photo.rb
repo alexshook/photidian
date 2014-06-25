@@ -20,13 +20,14 @@ class Photo < ActiveRecord::Base
 
   def self.check_date_last_photo(current_user)
     todays_date = Time.now.to_s
-    while current_user != nil
-      break if current_user.photos.class == nil
+    if current_user != nil
+      if current_user.photos.size == 0
         return false
-      break if current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == true
+      elsif current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == true
         return true
-      break if current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == false
+      elsif current_user.photos.last.img_url.include?(todays_date.gsub(/\s.*/, '')) == false
         return false
+      end
     end
   end
 
