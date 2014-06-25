@@ -1,9 +1,5 @@
 <%= javascript_include_tag 'photos' %>
 
-<% if (@user.private? == true) && (@user != current_user) %>
-  <h3>Sorry, this user's profile is private. Please choose another user!</h3>
-<% end %>
-
 <div id='user-profile' class='col-md-4'>
   <div class='user-text-profile'>
     <% @filtered_attributes.each do |attr| %>

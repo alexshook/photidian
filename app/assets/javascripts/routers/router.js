@@ -2,7 +2,6 @@ var PhotoRouter = Backbone.Router.extend({
   initialize: function() {
     console.log('router');
     this.streamingView = new StreamingView({ el: $("#index") });
-    this.navView = new NavView({ el: $(".secondary-nav") });
     this.photoModel = new PhotoModel();
     this.userModel = new UserModel();
     this.userCollection = new UserCollection({model: this.userModel});

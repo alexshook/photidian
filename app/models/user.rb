@@ -94,13 +94,18 @@ class User < ActiveRecord::Base
     where('first_name LIKE :query OR username LIKE :query OR location LIKE :query', query: "%#{query}%")
   end
 
-  def private?
-    self.private == true ? true : false
-  end
+  # def private?
+  #   self.private == true ? true : false
+  # end
 
   def self.get_attributes(user)
     attributes = []
-    filtered_attributes = attributes.push(user.username, user.first_name, user.location, user.bio).reject! { |attribute| attribute == nil || attribute == "" }
+    attributes.push(user.username, user.first_name, user.location, user.bio)
+    if attributes.include?(nil)
+      filtered_attributes = attributes.reject! { |attribute| attribute == nil }
+    else
+      filtered_attributes = attributes
+    end
     return filtered_attributes
   end
 
