@@ -13,10 +13,11 @@
 <div id="index">
   <div class="centered">
     <% if current_user %>
-      <% if @date_last_photo_today == false %>
+      <% if @date_last_photo_today == true %>
+      <%# if @date_last_photo_today == false %>
         <button id="get-started" class='btn btn-primary'>Take a Photo</button>
       <% else %>
-        <div class="taken-today">You have already taken a photo today.</div>
+        <div class="taken-today">You have already taken a photo today. Why not <%= link_to "look for people to follow", users_path %>?</div>
       <% end %>
     <% else %>
       <%= render 'layouts/signup_signin_to_continue' %>

@@ -2,15 +2,12 @@ class UsersController < ApplicationController
   include UsersHelper
 
   before_action :authenticate_user!, except: [:index]
-  # TODO get private? method working and accessible by User and Photo. I think a method in app controller migth work, but maybe not for a before_filter
   before_action :is_private, only: [:show]
 
   def index
     @users = User.all
     following_photos = current_user.get_following_photos
     @feed = current_user.get_following_feed(following_photos)
-    query = params[:query]
-    @search_results = User.search_for(query)
   end
 
   def show
@@ -26,7 +23,7 @@ class UsersController < ApplicationController
     @users = User.search_for(query)
   end
 
-private
+  private
   def user_params
     params.require(:user).permit(:avatar, :username, :first_name, :last_name,:location, :bio, :avatar, :password, :password_confirmation, :current_password, :follower_id, :following_id)
   end

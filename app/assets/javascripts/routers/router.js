@@ -1,6 +1,5 @@
 var PhotoRouter = Backbone.Router.extend({
   initialize: function() {
-    console.log('router');
     this.streamingView = new StreamingView({ el: $("#index") });
     this.photoModel = new PhotoModel();
     this.userModel = new UserModel();
@@ -12,7 +11,6 @@ var PhotoRouter = Backbone.Router.extend({
     'users/:id': 'showUser'
   },
   index: function() {
-    console.log('index router');
     this.userCollection.fetch({reset: true, wait: true});
   },
   showUser: function(id) {

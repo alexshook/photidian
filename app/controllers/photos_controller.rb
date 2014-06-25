@@ -1,5 +1,4 @@
 class PhotosController < ApplicationController
-  include UsersHelper
   before_action :authenticate_user!, except: [:index, :new]
 
   def index
