@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @display_photos = @user.get_s3_photos
     @oldest_to_newest = @user.photos.newest_to_oldest
     @oldest_to_newest = @user.photos.oldest_to_newest
+    @filtered_attributes = User.get_attributes(@user)
   end
 
   def search

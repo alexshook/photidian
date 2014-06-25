@@ -90,12 +90,18 @@ class User < ActiveRecord::Base
     return feed_hash
   end
 
-  def self.search_for(q)
-    where('first_name LIKE :q OR username LIKE :q OR location LIKE :q', q: "%#{q}%")
+  def self.search_for(query)
+    where('first_name LIKE :query OR username LIKE :query OR location LIKE :query', query: "%#{query}%")
   end
 
   def private?
-    (self.private == true) ? true : false
+    self.private == true ? true : false
+  end
+
+  def self.get_attributes(user)
+    attributes = []
+    filtered_attributes = attributes.push(user.username, user.first_name, user.location, user.bio).reject! { |attribute| attribute == nil || attribute == "" }
+    return filtered_attributes
   end
 
 end

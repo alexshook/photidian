@@ -6,19 +6,8 @@
 
 <div id='user-profile' class='col-md-4'>
   <div class='user-text-profile'>
-    <% if @user.first_name == nil %>
-      <h3><%= @user.username %></h3>
-    <% else %>
-      <h3><%= @user.first_name %></h3>
-      <p><%= @user.username %></p>
-    <% end %>
-
-    <% if @user.location != nil %>
-      <p><%= @user.location %></p>
-    <% end %>
-
-    <% if @user.bio != nil %>
-      <p><%= @user.bio %></p>
+    <% @filtered_attributes.each do |attr| %>
+      <div><%= attr %></div>
     <% end %>
 
     <% if @user == current_user %>
