@@ -1,4 +1,5 @@
 /* Global Styles */
+/* #TODO Add in Pure CSS and strip out bootstrap. Don't forget to write a modal js to handle sign in */
 
 .centered {
   text-align: center;

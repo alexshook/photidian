@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include ApplicationHelper
 
   before_action :authenticate_user!, except: [:index]
-
+  # TODO get private? method working and accessible by User and Photo. I think a method in app controller migth work, but maybe not for a before_filter
   def index
     @users = User.all
     following_photos = current_user.get_following_photos
