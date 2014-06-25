@@ -94,4 +94,8 @@ class User < ActiveRecord::Base
     where('first_name LIKE :q OR username LIKE :q OR location LIKE :q', q: "%#{q}%")
   end
 
+  def private?
+    (self.private == true) ? true : false
+  end
+
 end
