@@ -16,7 +16,8 @@ var StreamingView = Backbone.View.extend({
     'click button#get-started': 'displayButtons',
     'click button#take-photo': 'takePhoto',
     'click button#upload-button': 'uploadPhoto',
-    'click a#demo': 'showPopover'
+    'click a#demo': 'showPopover',
+    'click body': 'closePopover'
   },
 
   displayButtons: function() {
@@ -81,4 +82,5 @@ var StreamingView = Backbone.View.extend({
   showPopover: function() {
     $('#demo').popover('toggle');
   }
+
 });

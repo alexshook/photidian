@@ -15,7 +15,7 @@ var NavView = Backbone.View.extend ({
     console.log('hey im displaySearchForm');
     var searchFormTemplate = _.template($("#search-template").html());
     $('.secondary-nav').append($('<div id="search-form-wrapper" class="centered"></div>'));
-    $('#search-form-wrapper').html(searchFormTemplate).slideDown('slow');
+    $('#search-form-wrapper').html(searchFormTemplate);
   },
 
   displayAbout: function(e) {
@@ -23,7 +23,7 @@ var NavView = Backbone.View.extend ({
     console.log('hey im displayAbout');
     var aboutTemplate = _.template($("#about-template").html());
     $('.secondary-nav').append('<div id="about-template-wrapper"></div>');
-    $('#about-template-wrapper').html(aboutTemplate).slideDown('fast');
+    $('#about-template-wrapper').html(aboutTemplate);
   }
 
 });
