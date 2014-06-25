@@ -1,6 +1,10 @@
 /* Global Styles */
 /* #TODO Add in Pure CSS and strip out bootstrap. Don't forget to write a modal js to handle sign in */
 
+html, body {
+font-family: 'Montserrat', sans-serif;
+}
+
 .centered {
   text-align: center;
 }
