@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   include UsersHelper
+  include ApplicationHelper
+
   before_action :authenticate_user!, except: [:index]
+  before_action :private?, only: [ :show ]
 
   def index
     @users = User.all
