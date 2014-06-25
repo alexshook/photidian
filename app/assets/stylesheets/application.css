@@ -10,7 +10,6 @@
  *
  *= require font-awesome
  *= require bootstrap.min
- *= require flatly.min
  *= require_self
  *= require_tree .
  */
