@@ -2,7 +2,7 @@ var NavView = Backbone.View.extend ({
   el: 'div.secondary-nav',
 
   initialize: function() {
-    console.log('im initialize SearchView');
+    console.log('initialize NavView');
   },
 
   events: {
@@ -23,8 +23,7 @@ var NavView = Backbone.View.extend ({
     console.log('hey im displayAbout');
     var aboutTemplate = _.template($("#about-template").html());
     $('.secondary-nav').append('<div id="about-template-wrapper"></div>');
-    $('#about-template-wrapper').html(aboutTemplate);
-    $("#about-template").removeClass('hide');
+    $('#about-template-wrapper').html(aboutTemplate).slideDown('fast');
   }
 
 });
