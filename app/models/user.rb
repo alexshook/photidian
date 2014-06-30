@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     :storage => :s3,
     :url => ":s3_domain_url",
     :path => "/:class/:attachment/:id_partition/:style/:filename",
-    :s3_credentials => Proc.new{|a| a.instance.s3_credentials },
+    :s3_credentials => Proc.new{ |a| a.instance.s3_credentials },
     :styles => {
       :medium => "300x300>",
       :thumb => "100x100>"
