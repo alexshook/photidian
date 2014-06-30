@@ -13,7 +13,7 @@ var NavView = Backbone.View.extend ({
   displaySearchForm: function(e) {
     e.preventDefault();
     console.log('hey im displaySearchForm');
-    $('#search-form-wrapper').toggleClass();
+    $('#search-form-wrapper').toggleClass('hide');
   },
 
   displayAbout: function(e) {
