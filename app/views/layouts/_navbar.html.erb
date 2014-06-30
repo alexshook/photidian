@@ -21,3 +21,9 @@
     </div><!-- end secondary-nav -->
   </div><!-- end navbar-main -->
 </div><!-- end container-fluid -->
+
+<div id="search-form-wrapper" class="hide">
+    <%= form_tag '/search', method: 'get', id: 'search-form', class: 'centered' do %>
+      <%= text_field_tag :query, params[:query], placeholder: 'Search users or locations and hit enter...', class: 'form-control' %>
+    <% end %>
+</div>

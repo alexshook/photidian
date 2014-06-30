@@ -13,9 +13,7 @@ var NavView = Backbone.View.extend ({
   displaySearchForm: function(e) {
     e.preventDefault();
     console.log('hey im displaySearchForm');
-    var searchFormTemplate = _.template($("#search-template").html());
-    $('.secondary-nav').append($('<div id="search-form-wrapper" class="centered"></div>'));
-    $('#search-form-wrapper').html(searchFormTemplate);
+    $('#search-form-wrapper').toggleClass();
   },
 
   displayAbout: function(e) {
