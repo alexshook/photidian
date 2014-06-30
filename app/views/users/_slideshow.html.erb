@@ -1,0 +1,15 @@
+<div id="loading-photos">
+  <p>Loading photos, please wait...</p>
+</div>
+<div class="slideshow-button">
+  <button id="start" class='btn btn-primary'>Start Slideshow</button>
+</div>
+<!-- begin display photos from s3 -->
+<div id='user-camera-photos' class='whiteout'>
+  <% @display_photos.map do |database_key, photo| %>
+    <%= div_for database_key do %>
+      <%= database_key.created_at.to_formatted_s(:long_ordinal) %>
+      <img src="<%= photo %>", class: 'img-wrapper whiteout' %>
+    <% end %>
+  <% end %>
+</div><!-- end display photos from s3 -->

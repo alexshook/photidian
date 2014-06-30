@@ -1,0 +1,8 @@
+<div class="user-photos-index">
+  <h4><%= @user.username %> has taken photos on: </h4>
+  <ul>
+  <% @user.photos.each do |photo| %>
+    <li><%= link_to photo.created_at.to_formatted_s(:long_ordinal), photo %></li>
+  <% end %>
+  </ul>
+</div>

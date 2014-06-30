@@ -38,30 +38,8 @@
 
 <div class='col-md-6'>
 
-  <div id="loading-photos">
-    <p>Loading photos, please wait...</p>
-  </div>
-  <div class="slideshow-button">
-    <button id="start" class='btn btn-primary'>Start Slideshow</button>
-  </div>
-  <!-- begin display photos from s3 -->
-  <div id='user-camera-photos' class='whiteout'>
-    <% @display_photos.map do |database_key, photo| %>
-      <%= div_for database_key do %>
-        <%= database_key.created_at.to_formatted_s(:long_ordinal) %>
-        <img src="<%= photo %>", class: 'img-wrapper whiteout' %>
-      <% end %>
-    <% end %>
-  </div><!-- end display photos from s3 -->
-
-  <div class="user-photos-index">
-    <h4><%= @user.username %> has taken photos on: </h4>
-    <ul>
-    <% @user.photos.each do |photo| %>
-      <li><%= link_to photo.created_at.to_formatted_s(:long_ordinal), photo %></li>
-    <% end %>
-    </ul>
-  </div>
+  <%= render partial: 'user_photos_index', locals: { user: @user } %>
+  <%= render partial: 'slideshow', locals: { display_photos: @display_photos } %>
 
   <div id="#following-modal">
     <%= render :template => 'users/_following' %>
