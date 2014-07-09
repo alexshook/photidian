@@ -1,5 +1,11 @@
 <h2>Sign up</h2>
 
+  <div class="centered">
+    <p>Don't want to sign up for an account? <a id="demo">Click here</a> to view the demo account credentials.</p>
+    <div class="hide">
+      email: photidian@gmail.com password: photidiandemo ***Please be aware that any photos you take will be accessible to all users.</div>
+  </div>
+
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name, html: {class: 'form-horizontal'})) do |f| %>
 <%= f.error_notification %>
 
