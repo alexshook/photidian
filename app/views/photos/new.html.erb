@@ -7,7 +7,10 @@
         <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
         <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
       </div>
-      <div class='about-photidian-desc'>The average laptop/desktop owner spends five hours or more per day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</div>
+      <div class='about-photidian-desc'>
+        <p>The average laptop/desktop owner spends five hours or more per day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</p>
+        <p>View the source code on <a href="https://github.com/alexshook/photidian">GitHub</a></p>
+      </div>
     </script>
 </div>
 
@@ -21,12 +24,13 @@
         <div class="taken-today">You have already taken a photo today. Why not <%= link_to "look for people to follow", users_path %>?</div>
       <% end %>
     <% else %>
-      <%= render 'layouts/signup_signin_to_continue' %>
+      <div>Please <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> to continue.</div>
+      <div class="icon"><%= fa_icon "camera-retro" %></div>
     <% end %>
   </div>
 </div>
 
-<script type="text/template" id="buttons-template">
+<script type="text/template" id="fbuttons-template">
   <div id="allow-access" class="error-handler-style">
     <p>Please allow photidian to access your camera.</p>
   </div>
@@ -42,14 +46,16 @@
     </div>
 </script>
 
-<div class="video-canvas col-md-6">
-  <video id='vid' width ='500' height='375'></video>
-</div>
+<script type="text/template" id="video-canvas-template">
+  <div class="video-canvas col-md-6">
+    <video id='vid' width ='500' height='375'></video>
+  </div>
 
-<div class="snapshot col-md-6">
-  <canvas id='can' width ='500' height='375'></canvas>
-  <img src="" id="photo">
-</div>
+  <div class="snapshot col-md-6">
+    <canvas id='can' width ='500' height='375'></canvas>
+    <img src="" id="photo">
+  </div>
+</script>
 
 <div class="tags-list">
 </div>

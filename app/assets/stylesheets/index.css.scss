@@ -1,5 +1,4 @@
 /* Global Styles */
-/* #TODO Add in Pure CSS and strip out bootstrap. Don't forget to write a modal js to handle sign in */
 
 html, body {
 font-family: 'Montserrat', sans-serif;
@@ -27,11 +26,23 @@ font-family: 'Montserrat', sans-serif;
     display: block;
 }
 
+.icon {
+  font-size: 450px;
+}
+
 /* Nav Styles */
 
 .container-fluid {
   padding: 0;
 } //bootstrap override
+
+.secondary-nav {
+  padding: 0 auto;
+}
+
+.right {
+  text-align: right;
+}
 
 .top-nav {
   color: #000;
@@ -133,3 +144,12 @@ font-family: 'Montserrat', sans-serif;
   border-color: #95a5a6;
 }
 
+// Modal Styles
+
+#sign-up {
+  display: none;
+}
+
+#sign-in {
+  display: none;
+}
