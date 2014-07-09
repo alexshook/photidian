@@ -1,5 +1,4 @@
 var NavView = Backbone.View.extend ({
-  el: 'div.secondary-nav',
 
   initialize: function() {
     console.log('initialize NavView');
@@ -20,7 +19,8 @@ var NavView = Backbone.View.extend ({
     e.preventDefault();
     console.log('hey im displayAbout');
     var aboutTemplate = _.template($("#about-template").html());
-    $('.secondary-nav').append('<div id="about-template-wrapper"></div>');
+    $('#index').empty();
+    $('#index').append('<div id="about-template-wrapper"></div>');
     $('#about-template-wrapper').html(aboutTemplate);
   }
 
