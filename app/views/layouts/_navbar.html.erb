@@ -1,24 +1,33 @@
 <div class="container-fluid">
   <div class="navbar-main">
+    <div class="secondary-nav pure-menu pure-menu-open pure-menu-horizontal right">
+    <% if current_user %>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Take a Photo", root_path %></li>
+        <li><%= link_to "My Photos", user_path(current_user.id) %></li>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: 'delete' %></li>
+        <li><%= form_tag '/search', method: 'get', id: 'search-form', class: 'pure-form' do %>
+            <%= text_field_tag :query, params[:query], placeholder: 'Search' %>
+          <% end %>
+        </li>
+      </ul>
+    <% else %>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><a id="about" href="#">About</a></li>
+        <li><%= link_to "Sign Up", "#" %></li>
+        <li><%= link_to "Sign In", "#" %></li>
+        <li><%= form_tag '/search', method: 'get', id: 'search-form', class: 'pure-form' do %>
+            <%= text_field_tag :query, params[:query], placeholder: 'Search users or locations and hit enter...', class: 'form-control' %>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+    </div><!-- end secondary-nav -->
     <div class="top-nav centered">
       <div class="top-nav-brand">pho <%= fa_icon "circle", class: 'cir-lg' %> ti <%= fa_icon "circle", class: 'cir-lg' %>  di <%= fa_icon "circle", class: 'cir-lg' %> an</div>
     </div>
-    <div class="secondary-nav">
-    <% if current_user %>
-      <ul class="nav">
-        <li><%= link_to "Take a Photo", root_path %></li>
-        <li><%= link_to "Search", root_path, id: 'search-users' %></li>
-        <li><%= link_to "My Photos", user_path(current_user.id) %></li>
-        <li><%= link_to "Log Out", destroy_user_session_path, method: 'delete' %></li>
-      </ul>
-    <% else %>
-      <ul class="nav">
-        <li><%= link_to "Home", root_path %></li>
-        <li><a id="about" href="#">About</a></li>
-        <li></li>
-        <li><a href="https://github.com/alexshook/photidian" target="_blank">GitHub</a></li>
-    <% end %>
-    </div><!-- end secondary-nav -->
   </div><!-- end navbar-main -->
 </div><!-- end container-fluid -->
 
