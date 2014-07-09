@@ -30,6 +30,8 @@ var StreamingView = Backbone.View.extend({
 
   getStream: function() {
     console.log('im getStream')
+    var streamTemplate = _.template($('#video-canvas-template').html());
+    this.$el.html(streamTemplate);
     navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
     if (navigator.getUserMedia) {
