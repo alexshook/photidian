@@ -1,6 +1,7 @@
 <%= javascript_include_tag 'start' %>
 
 <div id="nav-wrapper">
+
     <script type="text/template" id="about-template" class="hide">
       <div class="photodian-about centered">
         <h4><%= fa_icon "camera-retro" %> n. a photo a day</h4>
@@ -12,14 +13,18 @@
         <p>View the source code on <a href="https://github.com/alexshook/photidian">GitHub</a></p>
       </div>
     </script>
+
 </div>
 
 <div id="index">
+</div><!-- end index -->
+
+<script type="text/template" id="take-photo-template">
   <div class="centered">
     <% if current_user %>
       <% if @date_last_photo_today == false %>
       <%# if @date_last_photo_today == true %>
-        <button id="get-started" class='btn btn-primary'>Take a Photo</button>
+        <button id="get-started" class='btn btn-primary'>Ready for your close up?</button>
       <% else %>
         <div class="taken-today">You have already taken a photo today. Why not <%= link_to "look for people to follow", users_path %>?</div>
       <% end %>
@@ -28,9 +33,9 @@
       <div class="icon"><%= fa_icon "camera-retro" %></div>
     <% end %>
   </div>
-</div>
+</script>
 
-<script type="text/template" id="fbuttons-template">
+<script type="text/template" id="buttons-template">
   <div id="allow-access" class="error-handler-style">
     <p>Please allow photidian to access your camera.</p>
   </div>
@@ -47,19 +52,19 @@
 </script>
 
 <script type="text/template" id="video-canvas-template">
-  <div class="video-canvas col-md-6">
+  <div class="video-canvas">
     <video id='vid' width ='500' height='375'></video>
   </div>
 
-  <div class="snapshot col-md-6">
-    <canvas id='can' width ='500' height='375'></canvas>
+  <div class="snapshot">
+    <div class='hide'><canvas id='can' width ='500' height='375'></canvas></div>
     <img src="" id="photo">
   </div>
 </script>
 
 <div class="tags-list">
 </div>
-
+<!--
 <div id="#s3-save">
   <%= render :template => 'photos/_modal' %>
-</div>
+</div> -->

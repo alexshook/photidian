@@ -2,36 +2,41 @@ var StreamingView = Backbone.View.extend({
   el: 'div#index',
 
   initialize: function() {
+    this.render();
     this.isStreaming = false;
-    this.videoElement = document.getElementById('vid');
-    this.canvas = document.getElementById('can');
+    this.videoElement;
+    this.canvas;
     this.width = 500;
     this.height = 375;
     this.videoStream = { video: true, audio: false };
     this.data;
-    this.photo = document.getElementById('photo');
+    this.photo;
   },
 
   events: {
     'click button#get-started': 'displayButtons',
-    'click button#take-photo': 'takePhoto',
     'click button#upload-button': 'uploadPhoto',
-    'click a#demo': 'showPopover',
-    'click body': 'closePopover'
+    'click button#take-photo': 'takePhoto'
+  },
+
+  render: function() {
+    var takePhotoButtonTemplate = _.template($('#take-photo-template').html());
+    this.$el.append(takePhotoButtonTemplate);
   },
 
   displayButtons: function() {
     console.log('im display buttons');
     var buttonsTemplate = _.template($('#buttons-template').html());
     this.$el.html(buttonsTemplate);
+    var streamTemplate = _.template($('#video-canvas-template').html());
+    this.$el.append(streamTemplate);
     this.getStream();
     $('#allow-access').fadeTo(4600, 0);
   },
 
   getStream: function() {
-    console.log('im getStream')
-    var streamTemplate = _.template($('#video-canvas-template').html());
-    this.$el.html(streamTemplate);
+    console.log('im getStream');
+    this.videoElement = document.getElementById('vid');
     navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
     if (navigator.getUserMedia) {
@@ -40,7 +45,6 @@ var StreamingView = Backbone.View.extend({
         var url = window.URL || window.webkitURL;
         this.videoElement.src = url ? url.createObjectURL(stream) : stream;
         this.videoElement.play();
-        console.log(this);
       }.bind(this),
 
         function(error) {
@@ -51,6 +55,8 @@ var StreamingView = Backbone.View.extend({
 
   takePhoto: function() {
     console.log('hey im takePhoto');
+    this.canvas = document.getElementById('can');
+    this.photo = document.getElementById('photo')
     this.videoElement.setAttribute('width', this.width);
     this.videoElement.setAttribute('height', this.height);
     this.canvas.setAttribute('width', this.width);
@@ -79,10 +85,6 @@ var StreamingView = Backbone.View.extend({
         $('#s3-save').modal('show');
       });
     }
-  },
-
-  showPopover: function() {
-    $('#demo').popover('toggle');
   }
 
 });
