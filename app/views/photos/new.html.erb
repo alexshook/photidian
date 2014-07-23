@@ -31,7 +31,6 @@
         <div class="taken-today">You have already taken a photo today. Why not <%= link_to "look for people to follow", users_path %>?</div>
       <% end %>
     <% else %>
-      <div>Please <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> to continue.</div>
       <div class="icon"><%= fa_icon "camera-retro" %></div>
     <% end %>
   </div>
