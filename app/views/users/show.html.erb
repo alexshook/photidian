@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'photos' %>
 
-<div id='user-profile' class='col-md-4'>
+<div id='user-profile' class='pure-u-1-3 pure-u-md-1-3'>
   <div class='user-text-profile'>
     <% @filtered_attributes.each do |attr| %>
       <div><%= attr %></div>
@@ -27,21 +27,27 @@
     <%= image_tag @user.avatar.url(:medium), class: 'user-avatar-wrapper' %>
   </div>
 
-  <div id='view-followers-button'>
+  <div class='small-space'>
     <h4><%= @user.username %>'s Followers: </h4>
       <% @user.followers.each do |follower| %>
         <div><%= image_tag follower.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to follower.username, user_path(follower.id) %></div>
       <% end %>
   </div><!-- view-followers-button -->
+  <div class='small-space'>
+    <h4>People <%= @user.username %> Follows: </h4>
+      <% @user.following.each do |following| %>
+        <div><%= image_tag following.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to following.username, user_path(following.id) %></div>
+      <% end %>
+  </div><!-- view-followers-button -->
 
 </div> <!-- end user-profile -->
 
-<div class='col-md-6'>
+<div class='pure-u-2-3 pure-u-md-2-3'>
 
-  <%= render partial: 'user_photos_index', locals: { user: @user } %>
   <%= render partial: 'slideshow', locals: { display_photos: @display_photos } %>
+  <%= render partial: 'user_photos_index', locals: { user: @user } %>
 
-  <div id="#following-modal">
-    <%= render :template => 'users/_following' %>
-  </div>
+<!--   <div id="#following-modal">
+    <%#= render :template => 'users/_following' %>
+  </div> -->
 </div><!-- end col-md-6 -->
