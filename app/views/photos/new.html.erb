@@ -1,5 +1,7 @@
 <%= javascript_include_tag 'start' %>
 
+<div id="overlay" class="hide"></div>
+
 <div id="nav-wrapper">
 
     <script type="text/template" id="about-template" class="hide">
@@ -68,3 +70,7 @@
 <div id="#s3-save">
   <%= render :template => 'photos/_modal' %>
 </div> -->
+
+<script type="text/template" id="sign-up-modal-template">
+  <%= render template: 'devise/sessions/_new' %>
+</script>
