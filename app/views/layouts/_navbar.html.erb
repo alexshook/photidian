@@ -16,8 +16,8 @@
       <ul>
         <li><%= link_to "Home", root_path %></li>
         <li><a id="about" href="#">About</a></li>
-        <li><%= link_to "Sign Up", "#" %></li>
-        <li><%= link_to "Sign In", "#" %></li>
+        <li><%= link_to "Sign Up", "#", id: 'sign-up-link' %></li>
+        <li><%= link_to "Sign In", "#", id: 'sign-in-link' %></li>
         <li><%= form_tag '/search', method: 'get', id: 'search-form', class: 'pure-form' do %>
             <%= text_field_tag :query, params[:query], placeholder: 'Search users or locations and hit enter...', class: 'form-control' %>
           <% end %>
