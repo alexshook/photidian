@@ -12,13 +12,13 @@
       </div>
       <div class='about-photidian-desc'>
         <p>The average laptop/desktop owner spends five hours or more per day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</p>
-        <p>View the source code on <a href="https://github.com/alexshook/photidian">GitHub</a></p>
+        <p>View the source code on <a href="https://github.com/alexshook/photidian" target="blank">GitHub</a></p>
       </div>
     </script>
 
 </div>
 
-<div id="index">
+<div id="index" class="pure-u-5-5">
 </div><!-- end index -->
 
 <script type="text/template" id="take-photo-template">
@@ -26,7 +26,7 @@
     <% if current_user %>
       <% if @date_last_photo_today == false %>
       <%# if @date_last_photo_today == true %>
-        <button id="get-started" class='btn btn-primary'>Ready for your close up?</button>
+        <button id="get-started" class='pure-button pure-button-primary'>Ready for your close up?</button>
       <% else %>
         <div class="taken-today">You have already taken a photo today. Why not <%= link_to "look for people to follow", users_path %>?</div>
       <% end %>
@@ -41,8 +41,8 @@
     <p>Please allow photidian to access your camera.</p>
   </div>
   <div class='buttons centered'>
-    <button id='take-photo' class='btn btn-primary'><%= fa_icon "camera-retro" %> Take Photo!</button>
-    <button id='upload-button' class='btn btn-primary'>Use this photo for <%= Date.today.to_formatted_s(:long) %>.</button>
+    <button id='take-photo' class='pure-button pure-button-primary'><%= fa_icon "camera-retro" %> Take Photo!</button>
+    <button id='upload-button' class='pure-button pure-button-primary'>Use this photo for <%= Date.today.to_formatted_s(:long) %>.</button>
   </div>
 </script>
 
@@ -55,12 +55,12 @@
 <script type="text/template" id="video-canvas-template">
   <div class="video-canvas">
     <video id='vid' width ='500' height='375'></video>
+    <div class="snapshot">
+      <div class='hide'><canvas id='can' width ='500' height='375'></canvas></div>
+      <img src="" id="photo">
+    </div>
   </div>
 
-  <div class="snapshot">
-    <div class='hide'><canvas id='can' width ='500' height='375'></canvas></div>
-    <img src="" id="photo">
-  </div>
 </script>
 
 <div class="tags-list">
