@@ -1,17 +1,19 @@
-<h2>Sign in</h2>
+<div class='pure-u-2-3 pure-u-md-2-3'>
+  <h2>Sign in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-stacked'}) do |f| %>
-<%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'pure-form pure-form-stacked'}) do |f| %>
+  <%= f.error_notification %>
 
-<div>
-<%= f.input :email, required: true %>
-<%= f.input :password, required: true %>
-<%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <div>
+  <%= f.input :email, required: true %>
+  <%= f.input :password, required: true %>
+  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+  <%= f.button :submit, "Sign in", class: 'pure-button pure-button-primary' %>
+  </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
 </div>
-
-<div class="form-actions">
-<%= f.button :submit, "Sign in", class: 'pure-button pure-button-primary' %>
-</div>
-<% end %>
-
-<%= render "devise/shared/links" %>
