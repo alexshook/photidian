@@ -1,5 +1,7 @@
-<% @users.each do |user| %>
-  <ul>
-    <li><%= image_tag user.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to user.username, user %></li>
-  </ul>
-<% end %>
+<div class='pure-u-2-3 pure-u-md-2-3'>
+  <% @users.each do |user| %>
+    <ul>
+      <li><%= image_tag user.avatar.url(:thumb), class: 'user-relationship-thumb' %> <%= link_to user.username, user %></li>
+    </ul>
+  <% end %>
+</div>
