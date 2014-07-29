@@ -9,13 +9,17 @@ describe User do
   describe "#following" do
     it "should check for a relationship" do
       @user.follow(@user2)
-      @user.following?(@user2)
-      expect @user.relationships.length.to be >= 1
+      expect @user.relationships.length.should be >= 1
     end
   end
 
   describe "#unfollow" do
-
+    it "should check for a relationship to not exist" do
+      @user.follow(@user2)
+      @user2.follow(@user)
+      @user2.unfollow(@user)
+      expect @user2.relationships.length.should be <= 1
+    end
   end
 
 end #end describe User

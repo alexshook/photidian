@@ -19,7 +19,7 @@ describe "the signin process", :type => :feature do
     fill_in 'Password', with: 'qwertyqwerty'
     click_button 'Sign in'
     click_on 'Log Out'
-    expect(page).to have_content 'Signed out successfully.'
+    expect(page).to have_content 'Sign In'
   end
 
 end

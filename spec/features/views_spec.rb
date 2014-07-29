@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "view profile" do
   before :each do
-    user = User.create(username: Faker::Internet.user_name, email: 'als304@gmail.com', password: 'qwertyqwerty', password_confirmation: 'qwertyqwerty')
+    @user = User.create(username: Faker::Internet.user_name, email: 'als304@gmail.com', password: 'qwertyqwerty', password_confirmation: 'qwertyqwerty')
     visit root_path
   end
 
@@ -15,7 +15,7 @@ feature "view profile" do
   end
 
   scenario "visits my profile page" do
-    visit 'users/1'
+    visit "users/#{@user.id}"
     expect(page).to have_content :username
   end
 
@@ -24,7 +24,7 @@ feature "view profile" do
     fill_in 'Email', with: 'als304@gmail.com'
     fill_in 'Password', with: 'qwertyqwerty'
     click_button 'Sign in'
-    visit 'users/1'
+    visit "users/#{@user.id}"
     click_on "Edit Profile"
     expect(page).to have_content 'Upload a profile photo'
   end
