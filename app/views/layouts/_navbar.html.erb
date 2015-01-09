@@ -4,6 +4,7 @@
     <% if current_user %>
       <ul>
         <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", "#", id: 'about' %></li>
         <li><%= link_to "Take a Photo", root_path %></li>
         <li><%= link_to "My Photos", user_path(current_user.id) %></li>
         <li><%= link_to "Log Out", destroy_user_session_path, method: 'delete' %></li>
