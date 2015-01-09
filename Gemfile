@@ -19,6 +19,7 @@ group :development, :test do
   gem 'capybara', '~> 2.2.1'
   gem 'faker', '~> 1.3.0'
   gem 'quiet_assets', '~> 1.0.2'
+  gem 'nyan-cat-formatter'
 end
 
 group :production do
