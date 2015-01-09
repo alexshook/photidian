@@ -24,8 +24,8 @@
 <script type="text/template" id="take-photo-template">
   <div class="centered">
     <% if current_user %>
-      <%# if @date_last_photo_today == false %>
-      <% if @date_last_photo_today == true %>
+      <% if @date_last_photo_today == false %>
+      <%# if @date_last_photo_today == true %>
         <button id="get-started" class='pure-button pure-button-primary'>Ready for your close up?</button>
       <% else %>
         <div class="taken-today">You have already taken a photo today. Why not <%= link_to "look for people to follow", users_path %>?</div>
