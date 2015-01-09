@@ -70,6 +70,7 @@ var StreamingView = Backbone.View.extend({
 
   uploadPhoto: function() {
     console.log('hey im uploadPhoto');
+    var returnPhoto;
     if ((this.photo.src == 'http://0.0.0.0:3000/') || (this.photo.src == 'http://photidian.herokuapp.com/')) {
       var errorHandlerTemplate = _.template($('#error-handler').html());
       this.$el.html(errorHandlerTemplate);
@@ -79,10 +80,9 @@ var StreamingView = Backbone.View.extend({
       method: 'post',
       dataType: 'json',
       data: { file: photo.src }
-      }).done(function() {
-        $.get('/photos');
-      }).done(function() {
-        $('#s3-save').modal('show');
+      }).done(function(response) {
+        var currentURL = window.location.href;
+        window.location = currentURL + "photos/" + response.id
       });
     }
   }

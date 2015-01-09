@@ -37,7 +37,7 @@ class PhotosController < ApplicationController
     @photo.save
 
     # check response from s3
-    return_data = {file: data}
+    return_data = { id: "#{@photo.id}" }
 
     respond_to do |format|
       format.json { render json: return_data.to_json }
