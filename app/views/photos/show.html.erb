@@ -1,16 +1,25 @@
-<h2><%= link_to @photo.user.username, @photo.user %> on <%= @photo.created_at.to_formatted_s(:long) %></h2>
+<div class="pure-u-5-5 centered">
+  <h3><%= link_to @photo.user.username, @photo.user %> on <%= @photo.created_at.to_formatted_s(:long) %></h3>
+  <img src="<%= @display_photo %>">
+</div>
 
-<img src="<%= @display_photo %>">
-
-<%= form_tag "/tags/add" do %>
-  <%= select_tag "tags", options_from_collection_for_select(@tags, "id", "name") %>
-  <%= hidden_field_tag "photo", @photo.id %>
-  <%= submit_tag "Tag this Photo" %>
-<% end %>
-
-<% if @photo.tags.length != 0 %>
-Tagged:
-  <% @photo.tags.each do |tag| %>
-    <%= tag.name %>
+<div class="pure-u-5-5 centered">
+  <% if has_tags(@photo) %>
+  Tagged with:
+    <% @photo.tags.each do |tag| %>
+      <%= tag.name %>
+      <%#= link_to tag.name, tag %>
+    <% end %>
   <% end %>
+</div>
+
+<% if current_user == @photo.user %>
+  <div class="pure-u-5-5 centered">
+    <h4>Tag this photo?</h4>
+    <%= form_tag "/tags/add", class: "pure-form" do %>
+      <%= select_tag "tags", options_from_collection_for_select(@tags, "id", "name") %>
+      <%= hidden_field_tag "photo", @photo.id %>
+      <%= submit_tag "Tag", class: "pure-button pure-button-primary" %>
+    <% end %>
+  </div>
 <% end %>
