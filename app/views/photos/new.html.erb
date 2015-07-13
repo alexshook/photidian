@@ -3,19 +3,7 @@
 <div id="overlay" class="hide"></div>
 
 <div id="nav-wrapper">
-
-    <script type="text/template" id="about-template" class="hide">
-      <div class="photodian-about centered">
-        <h4><%= fa_icon "camera-retro" %> n. a photo a day</h4>
-        <h3>pho <%= fa_icon "circle", class: 'cir-xxs' %> to + quo <%= fa_icon "circle", class: 'cir-xxs' %> ti <%= fa_icon "circle", class: 'cir-xxs' %> di <%= fa_icon "circle", class: 'cir-xxs' %> an</h3>
-        <h4><%= fa_icon 'photo' %> n. a photograph + <%= fa_icon 'calendar' %> n. of or occurring every day</h4>
-      </div>
-      <div class='about-photidian-desc'>
-        <p>The average laptop/desktop owner spends five hours or more per day in front of a computer screen. Photidian is a visual diary of those hours- take a photo with your webcam every day and document your life in front of the computer. You can view your photos by date or in a slideshow for a time-lapse effect.</p>
-        <p>View the source code on <a href="https://github.com/alexshook/photidian" target="blank">GitHub</a></p>
-      </div>
-    </script>
-
+  <%= render 'layouts/about' %>
 </div>
 
 <div id="index" class="pure-u-5-5">
@@ -72,4 +60,8 @@
 
 <script type="text/template" id="sign-in-template">
   <%= render template: 'devise/sessions/new' %>
+</script>
+
+<script type="text/template" id="users-list-template">
+
 </script>

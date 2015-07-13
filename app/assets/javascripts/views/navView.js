@@ -14,6 +14,7 @@ var NavView = Backbone.View.extend ({
     e.preventDefault();
     var aboutTemplate = _.template($("#about-template").html());
     $('#index').empty();
+    $('#index').addClass('pure-u-5-5');
     $('#index').append('<div id="about-template-wrapper"></div>');
     $('#about-template-wrapper').html(aboutTemplate);
   },
